@@ -1,0 +1,7 @@
+/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m: In function '-[WidgetFactory initializeButton:nextToFrame:inView:]':
+/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m:16: warning: control reaches end of non-void function
+/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m: In function '-[WidgetFactory initializeWidget:withTitle:nextToFrame:inView:]':
+/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m:21: error: switch quantity not an integer
+/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m:22: error: pointers are not permitted as case values
+/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m:23: error: expected expression before '<' token
+/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m:28: warning: control reaches end of non-void function
