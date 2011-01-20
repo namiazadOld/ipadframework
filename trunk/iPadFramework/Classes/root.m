@@ -30,7 +30,7 @@
 	[[containerStack top] addBodyControl:button1];
 	
 	iButton* button2 = [[iButton alloc]initialize:@"Bye"];
-	[containerStack push:button2];
+	[containerStack push:button2] ;
 	[containerStack pop];
 	[button2 finilize];
 	[[containerStack top] addBodyControl:button2];
