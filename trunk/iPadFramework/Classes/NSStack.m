@@ -25,7 +25,7 @@
 
 -(id) pop
 {
-	id top = [storage objectAtIndex:[storage count] - 1];
+	id top = [storage objectAtIndex:[storage count] - 1]
 	[storage removeLastObject];
 	return top;
 }
