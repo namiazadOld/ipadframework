@@ -1,0 +1,18 @@
+In file included from /Users/nami/Documents/iPadFramework/Classes/RootView.m:9:
+/Users/nami/Documents/iPadFramework/Classes/RootView.h:11:16: error: iView: No such file or directory
+/Users/nami/Documents/iPadFramework/Classes/RootView.m: In function '-[RootView initializeControls:]':
+/Users/nami/Documents/iPadFramework/Classes/RootView.m:21: warning: unused variable 'frame'
+/Users/nami/Documents/iPadFramework/Classes/RootView.m: In function '-[RootView initialize:nextToFrame:]':
+/Users/nami/Documents/iPadFramework/Classes/RootView.m:41: warning: unused variable 'initialFrame'
+/Users/nami/Documents/iPadFramework/Classes/RootView.m:47: warning: control reaches end of non-void function
+/Users/nami/Documents/iPadFramework/Classes/RootView.m: In function '-[RootView willRotateToInterfaceOrientation:duration:]':
+/Users/nami/Documents/iPadFramework/Classes/RootView.m:57: warning: 'NSObject' may not respond to '-orientationChanged:'
+/Users/nami/Documents/iPadFramework/Classes/RootView.m:57: warning: (Messages without a matching method signature
+/Users/nami/Documents/iPadFramework/Classes/RootView.m:57: warning: will be assumed to return 'id' and accept
+/Users/nami/Documents/iPadFramework/Classes/RootView.m:57: warning: '...' as arguments.)
+/Users/nami/Documents/iPadFramework/Classes/RootView.m: At top level:
+/Users/nami/Documents/iPadFramework/Classes/RootView.m:60: warning: incomplete implementation of class 'RootView'
+/Users/nami/Documents/iPadFramework/Classes/RootView.m:60: warning: method definition for '-addBodyControl:' not found
+/Users/nami/Documents/iPadFramework/Classes/RootView.m:60: warning: method definition for '-orientationChanged:' not found
+/Users/nami/Documents/iPadFramework/Classes/RootView.m:60: warning: method definition for '-getFrame' not found
+/Users/nami/Documents/iPadFramework/Classes/RootView.m:60: warning: class 'RootView' does not fully implement the 'iWidget' protocol

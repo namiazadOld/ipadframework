@@ -1,0 +1,277 @@
+TiPadFramework
+v7
+r0
+t315862396.608266
+cCheck dependencies
+cProcessInfoPlistFile /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/Info.plist iPadFramework-Info.plist
+cCompileXIB /Users/nami/Documents/iPadFramework/MainWindow.xib
+cProcessPCH /var/folders/F8/F87dM3MpEGiYq9aqSyRSA++++Tc/-Caches-/com.apple.Xcode.506/SharedPrecompiledHeaders/iPadFramework_Prefix-aotaaktvmdeusbcyuosfmzpjeztq/iPadFramework_Prefix.pch.gch iPadFramework_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+cDataModelVersionCompile /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework.momd /Users/nami/Documents/iPadFramework/iPadFramework.xcdatamodeld
+cCompileC build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/main.o /Users/nami/Documents/iPadFramework/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/iPadFrameworkAppDelegate.o /Users/nami/Documents/iPadFramework/Classes/iPadFrameworkAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cCompileC build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/WidgetFactory.o /Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m normal i386 objective-c com.apple.compilers.gcc.4_2
+cLd /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework normal i386
+cGenerateDSYMFile /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app.dSYM /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework
+cTouch /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk
+c000000004C494D260000000000000110
+t1279872294
+s272
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/CoreData.framework/CoreData
+c000000004BD2002300000000001D2E00
+t1272053795
+s1912320
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/CoreData.framework/Headers/CoreData.h
+c000000004BD1FFED000000000000046B
+t1272053741
+s1131
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/CoreGraphics.framework/CoreGraphics
+c000000004BD1CD90000000000026F020
+t1272040848
+s2551840
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/Foundation.framework/Foundation
+c000000004BD1FFC200000000002A96A0
+t1272053698
+s2791072
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/Foundation.framework/Headers/Foundation.h
+c000000004BD1FF9E0000000000001355
+t1272053662
+s4949
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/UIKit.framework/Headers/UIKit.h
+c000000004BD20412000000000000098F
+t1272054802
+s2447
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/System/Library/Frameworks/UIKit.framework/UIKit
+c000000004BD20471000000000222E640
+t1272054897
+s35841600
+
+N/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk/usr/include/Availability.h
+c000000004BD1CFC10000000000001A1A
+t1272041409
+s6682
+
+N/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.h
+c000000004D2375DA0000000000000149
+t1294169562
+s329
+i<Foundation/Foundation.h>
+
+N/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m
+c000000004D2375EE000000000000013A
+t1294169582
+s314
+i"WidgetFactory.h"
+
+N/Users/nami/Documents/iPadFramework/Classes/iPadFrameworkAppDelegate.h
+c000000004D23723B000000000000035B
+t1294168635
+s859
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/nami/Documents/iPadFramework/Classes/iPadFrameworkAppDelegate.m
+c000000004D23723B0000000000001A27
+t1294168635
+s6695
+i"iPadFrameworkAppDelegate.h"
+
+N/Users/nami/Documents/iPadFramework/MainWindow.xib
+c000000004D23723B0000000000003E8B
+t1294168635
+s16011
+
+N/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app
+t1294169596
+s238
+
+N/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app.dSYM
+t1294169596
+s102
+
+N/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/Info.plist
+t1294169587
+s822
+
+N/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/MainWindow.nib
+t1294169591
+s990
+
+N/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/PkgInfo
+t1294169587
+s8
+
+N/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework
+t1294169596
+s17916
+
+N/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework.momd
+t1294169595
+s136
+
+N/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/WidgetFactory.o
+t1294169595
+s6668
+
+N/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/iPadFramework.LinkFileList
+c000000004D2375F300000000000001A6
+t1294169587
+s422
+
+N/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/iPadFrameworkAppDelegate.o
+t1294169595
+s31136
+
+N/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/main.o
+t1294169595
+s6296
+
+N/Users/nami/Documents/iPadFramework/iPadFramework.xcdatamodeld
+c000000004D23723B0000000000000088
+t1294168635
+s136
+
+N/Users/nami/Documents/iPadFramework/iPadFramework_Prefix.pch
+c000000004D23723B000000000000016E
+t1294168635
+s366
+i<Availability.h>
+i<Foundation/Foundation.h>
+i<UIKit/UIKit.h>
+i<CoreData/CoreData.h>
+
+N/Users/nami/Documents/iPadFramework/main.m
+c000000004D23723B0000000000000166
+t1294168635
+s358
+i<UIKit/UIKit.h>
+
+N/var/folders/F8/F87dM3MpEGiYq9aqSyRSA++++Tc/-Caches-/com.apple.Xcode.506/SharedPrecompiledHeaders/iPadFramework_Prefix-aotaaktvmdeusbcyuosfmzpjeztq/iPadFramework_Prefix.pch.gch
+t1294169594
+s14670512
+
+NiPadFramework-Info.plist
+c000000004D23723B00000000000004D6
+t1294168635
+s1238
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies315862387#315862387#0(0"0(0#1#0"32651513917735028#0"0#
+
+CCompileC build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/WidgetFactory.o /Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s315862395.400445
+e315862395.472738
+r1
+xCompileC
+xbuild/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/WidgetFactory.o
+x/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+o/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m: In function '-[WidgetFactory initializeWidget:withTitle:nextToFrame:]':
+o/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m:17: warning: control reaches end of non-void function
+lSLF07#2@67"Compile /Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m315862395#315862395#0(247"/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m: In function '-[WidgetFactory initializeWidget:withTitle:nextToFrame:]':/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m:17: warning: control reaches end of non-void function1(22@40"Control reaches end of non-void function315862395#133#114#0(6@59"/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m315862382#17#0#17#0#40"control reaches end of non-void function0(0#0#59"/Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m8603352992#2068"    cd /Users/nami/Documents/iPadFramework    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-generated-files.hmap -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-own-target-headers.hmap -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-all-target-headers.hmap -iquote /Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-project-headers.hmap -F/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator -I/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/include -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/DerivedSources/i386 -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/DerivedSources -include /var/folders/F8/F87dM3MpEGiYq9aqSyRSA++++Tc/-Caches-/com.apple.Xcode.506/SharedPrecompiledHeaders/iPadFramework_Prefix-aotaaktvmdeusbcyuosfmzpjeztq/iPadFramework_Prefix.pch -c /Users/nami/Documents/iPadFramework/Classes/WidgetFactory.m -o /Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/WidgetFactory.o0#
+
+CCompileC build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/iPadFrameworkAppDelegate.o /Users/nami/Documents/iPadFramework/Classes/iPadFrameworkAppDelegate.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s315862395.312010
+e315862395.400348
+r1
+xCompileC
+xbuild/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/iPadFrameworkAppDelegate.o
+x/Users/nami/Documents/iPadFramework/Classes/iPadFrameworkAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@78"Compile /Users/nami/Documents/iPadFramework/Classes/iPadFrameworkAppDelegate.m315862395#315862395#0(0"0(0#0#70"/Users/nami/Documents/iPadFramework/Classes/iPadFrameworkAppDelegate.m8606391392#2090"    cd /Users/nami/Documents/iPadFramework    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-generated-files.hmap -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-own-target-headers.hmap -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-all-target-headers.hmap -iquote /Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-project-headers.hmap -F/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator -I/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/include -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/DerivedSources/i386 -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/DerivedSources -include /var/folders/F8/F87dM3MpEGiYq9aqSyRSA++++Tc/-Caches-/com.apple.Xcode.506/SharedPrecompiledHeaders/iPadFramework_Prefix-aotaaktvmdeusbcyuosfmzpjeztq/iPadFramework_Prefix.pch -c /Users/nami/Documents/iPadFramework/Classes/iPadFrameworkAppDelegate.m -o /Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/iPadFrameworkAppDelegate.o0#
+
+CCompileC build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/main.o /Users/nami/Documents/iPadFramework/main.m normal i386 objective-c com.apple.compilers.gcc.4_2
+s315862395.005886
+e315862395.311823
+r1
+xCompileC
+xbuild/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/main.o
+x/Users/nami/Documents/iPadFramework/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@50"Compile /Users/nami/Documents/iPadFramework/main.m315862395#315862395#0(0"0(0#0#42"/Users/nami/Documents/iPadFramework/main.m8614733184#2042"    cd /Users/nami/Documents/iPadFramework    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-generated-files.hmap -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-own-target-headers.hmap -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-all-target-headers.hmap -iquote /Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-project-headers.hmap -F/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator -I/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/include -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/DerivedSources/i386 -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/DerivedSources -include /var/folders/F8/F87dM3MpEGiYq9aqSyRSA++++Tc/-Caches-/com.apple.Xcode.506/SharedPrecompiledHeaders/iPadFramework_Prefix-aotaaktvmdeusbcyuosfmzpjeztq/iPadFramework_Prefix.pch -c /Users/nami/Documents/iPadFramework/main.m -o /Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/nami/Documents/iPadFramework/MainWindow.xib
+s315862387.671958
+e315862392.384733
+r1
+xCompileXIB
+x/Users/nami/Documents/iPadFramework/MainWindow.xib
+o2011-01-04 20:33:11.391 Interface Builder Cocoa Touch Tool[5908:1b03] CFPreferences: user home directory at file://localhost/Users/nami/Library/Application%20Support/iPhone%20Simulator/User/ is unavailable. User domains will be volatile.
+lSLF07#2@25"CompileXIB MainWindow.xib315862387#315862392#0(238"2011-01-04 20:33:11.391 Interface Builder Cocoa Touch Tool[5908:1b03] CFPreferences: user home directory at file://localhost/Users/nami/Library/Application%20Support/iPhone%20Simulator/User/ is unavailable. User domains will be volatile.0(0#0#50"/Users/nami/Documents/iPadFramework/MainWindow.xib8614428768#567"    cd /Users/nami/Documents/iPadFramework    setenv IBC_MINIMUM_COMPATIBILITY_VERSION 3.2    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/MainWindow.nib /Users/nami/Documents/iPadFramework/MainWindow.xib --sdk /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk0#
+
+CDataModelVersionCompile /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework.momd /Users/nami/Documents/iPadFramework/iPadFramework.xcdatamodeld
+s315862394.984940
+e315862395.400122
+r1
+xDataModelVersionCompile
+x/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework.momd
+x/Users/nami/Documents/iPadFramework/iPadFramework.xcdatamodeld
+lSLF07#2@115"DataModelVersionCompile build/Debug-iphonesimulator/iPadFramework.app/iPadFramework.momd iPadFramework.xcdatamodeld315862394#315862395#0(0"0(0#0#62"/Users/nami/Documents/iPadFramework/iPadFramework.xcdatamodeld8614981344#395"    cd /Users/nami/Documents/iPadFramework    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/momc -XD_MOMC_TARGET_VERSION=10.5 /Users/nami/Documents/iPadFramework/iPadFramework.xcdatamodeld /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework.momd0#
+
+CGenerateDSYMFile /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app.dSYM /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework
+s315862396.499686
+e315862396.559688
+r1
+xGenerateDSYMFile
+x/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app.dSYM
+x/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework
+lSLF07#2@127"GenerateDSYMFile build/Debug-iphonesimulator/iPadFramework.app.dSYM build/Debug-iphonesimulator/iPadFramework.app/iPadFramework315862396#315862396#0(0"0(0#0#95"/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework8608438752#392"    cd /Users/nami/Documents/iPadFramework    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/usr/bin/dsymutil /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework -o /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app.dSYM0#
+
+CLd /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework normal i386
+s315862395.472838
+e315862396.499410
+r1
+xLd
+x/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework
+xnormal
+xi386
+lSLF07#2@100"Link /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework315862395#315862396#0(0"0(0#0#0"8614785152#935"    cd /Users/nami/Documents/iPadFramework    setenv MACOSX_DEPLOYMENT_TARGET 10.5    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -arch i386 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -L/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator -F/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator -filelist /Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/Objects-normal/i386/iPadFramework.LinkFileList -mmacosx-version-min=10.5 -Xlinker -objc_abi_version -Xlinker 2 -framework Foundation -framework UIKit -framework CoreGraphics -framework CoreData -o /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/iPadFramework0#
+
+CProcessInfoPlistFile /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/Info.plist iPadFramework-Info.plist
+s315862387.550772
+e315862387.671842
+r1
+xProcessInfoPlistFile
+x/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/Info.plist
+xiPadFramework-Info.plist
+lSLF07#2@32"Process iPadFramework-Info.plist315862387#315862387#0(0"0(0#0#60"/Users/nami/Documents/iPadFramework/iPadFramework-Info.plist32370056120631408#488"    cd /Users/nami/Documents/iPadFramework    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    builtin-infoPlistUtility iPadFramework-Info.plist -genpkginfo /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/PkgInfo -expandbuildsettings -format binary -platform iphonesimulator -o /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app/Info.plist0#
+
+CProcessPCH /var/folders/F8/F87dM3MpEGiYq9aqSyRSA++++Tc/-Caches-/com.apple.Xcode.506/SharedPrecompiledHeaders/iPadFramework_Prefix-aotaaktvmdeusbcyuosfmzpjeztq/iPadFramework_Prefix.pch.gch iPadFramework_Prefix.pch normal i386 objective-c com.apple.compilers.gcc.4_2
+s315862392.385198
+e315862394.984607
+r1
+xProcessPCH
+x/var/folders/F8/F87dM3MpEGiYq9aqSyRSA++++Tc/-Caches-/com.apple.Xcode.506/SharedPrecompiledHeaders/iPadFramework_Prefix-aotaaktvmdeusbcyuosfmzpjeztq/iPadFramework_Prefix.pch.gch
+xiPadFramework_Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.gcc.4_2
+lSLF07#2@35"Precompile iPadFramework_Prefix.pch315862392#315862394#0(0"0(0#0#60"/Users/nami/Documents/iPadFramework/iPadFramework_Prefix.pch8614012928#1931"    cd /Users/nami/Documents/iPadFramework    setenv LANG en_US.US-ASCII    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin/gcc-4.2 -x objective-c-header -arch i386 -fmessage-length=0 -pipe -std=c99 -Wno-trigraphs -fpascal-strings -fasm-blocks -O0 -Wreturn-type -Wunused-variable -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -isysroot /Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator3.2.sdk -fexceptions -fvisibility=hidden -mmacosx-version-min=10.5 -gdwarf-2 -fobjc-abi-version=2 -fobjc-legacy-dispatch -D__IPHONE_OS_VERSION_MIN_REQUIRED=30200 -iquote /Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-generated-files.hmap -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-own-target-headers.hmap -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-all-target-headers.hmap -iquote /Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/iPadFramework-project-headers.hmap -F/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator -I/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/include -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/DerivedSources/i386 -I/Users/nami/Documents/iPadFramework/build/iPadFramework.build/Debug-iphonesimulator/iPadFramework.build/DerivedSources -c /Users/nami/Documents/iPadFramework/iPadFramework_Prefix.pch -o /var/folders/F8/F87dM3MpEGiYq9aqSyRSA++++Tc/-Caches-/com.apple.Xcode.506/SharedPrecompiledHeaders/iPadFramework_Prefix-aotaaktvmdeusbcyuosfmzpjeztq/iPadFramework_Prefix.pch.gch0#
+
+CTouch /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app
+s315862396.559807
+e315862396.592750
+r1
+xTouch
+x/Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app
+lSLF07#2@87"Touch /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app315862396#315862396#0(0"0(0#0#0"8614405248#278"    cd /Users/nami/Documents/iPadFramework    setenv PATH "/Developer/Platforms/iPhoneSimulator.platform/Developer/usr/bin:/Developer/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin"    /usr/bin/touch -c /Users/nami/Documents/iPadFramework/build/Debug-iphonesimulator/iPadFramework.app0#
+
