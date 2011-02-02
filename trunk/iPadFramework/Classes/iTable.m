@@ -7,20 +7,22 @@
 //
 
 #import "iTable.h"
-#import "iSection.h"
 #import "iTableViewController.h"
+#import "iView.h"
 
 
 @implementation iTable
-@synthesize tableViewController, numberOfSections, numberofRowInSection, title;
+@synthesize tableViewController, sectionList, title;
 
 CGRect lastInnerControlFrame;
 
--(id<iWidget>) initialize: (NSString*)text
+-(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 {
-	numberOfSections = 0;
-	numberofRowInSection = 0;
-	title = text;
+}
+
+-(id<iWidget>) initialize: (NSMutableArray*)arguments
+{
+	sectionList = [[NSMutableArray alloc]init];
 	return self;
 }
 
@@ -54,16 +56,21 @@ CGRect lastInnerControlFrame;
 
 -(void) addBodyControl:(id<iWidget>) widget
 {
-	if ([widget isKindOfClass:[iSection class]])
-	{
-		self.numberOfSections++;
-	}
+	[widget parentChanged:self];
 }
 
 -(void) finilize
 {
-	UITableViewStyle style = numberOfSections > 0 ? UITableViewStyleGrouped : UITableViewStylePlain;
+	UITableViewStyle style = [self.sectionList count] > 1 ? UITableViewStyleGrouped : UITableViewStylePlain;
 	self.tableViewController = [[iTableViewController alloc] initWithStyle:style];
+	self.tableViewController.sectionList = self.sectionList;
+	self.tableViewController.title = self.title;
+}
+
+//This method is called by addBodyControl method of parent to provide good level of extensibility
+-(void) parentChanged: (id<iWidget>)parent
+{
+	
 }
 
 @end

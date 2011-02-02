@@ -7,6 +7,7 @@
 //
 
 #import "iButton.h"
+#import "NullObject.h"
 
 
 @implementation iButton
@@ -15,9 +16,20 @@
 
 CGRect lastInnerControlFrame;
 
--(id <iWidget>) initialize: (NSString*)text
+-(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
+{
+	[self.button addTarget:target action:action forControlEvents:controlEvents];
+}
+
+-(id <iWidget>) initialize: (NSMutableArray*) arguments
 {
 	self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+	
+	NSString* text = @"";
+	
+	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
+		text = [arguments objectAtIndex:0];
+	
 	[self.button setTitle:text forState:UIControlStateNormal];
 	return self;
 }
@@ -49,7 +61,7 @@ CGRect lastInnerControlFrame;
 
 -(void) addBodyControl:(id <iWidget>) widget
 {
-	
+	[widget parentChanged:self];
 }
 
 -(void) finilize
