@@ -7,10 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "iItem.h"
 
 
 @interface iTableViewController : UITableViewController {
-
+	    NSMutableArray* sectionList;	
 }
+
+@property (retain, nonatomic, readwrite) NSMutableArray* sectionList;
+
 
 @end
