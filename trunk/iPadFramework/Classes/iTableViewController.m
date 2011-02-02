@@ -7,10 +7,13 @@
 //
 
 #import "iTableViewController.h"
+#import "iSection.h"
+#import "iItem.h"
 
 
 @implementation iTableViewController
 
+@synthesize sectionList;
 
 #pragma mark -
 #pragma mark Initialization
@@ -19,15 +22,11 @@
 #pragma mark View lifecycle
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    // Return the number of sections.
-	NSLog(@"Hello");
-    //return numberOfSections;
-	return 2;
+ 	return [self.sectionList count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    // Return the number of rows in the section.
-    return 5;
+    return [[[self.sectionList objectAtIndex:section] itemList] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -39,10 +38,16 @@
         cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
     }
     
-	cell.textLabel.text = @"Nami";
+	iItem* item = [[[self.sectionList objectAtIndex:indexPath.section] itemList] objectAtIndex:indexPath.row];
+	cell.textLabel.text = item.text;
     // Configure the cell...
     
     return cell;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+	
+	return [[self.sectionList objectAtIndex:section] title];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
