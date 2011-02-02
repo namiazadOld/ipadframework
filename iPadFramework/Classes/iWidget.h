@@ -10,7 +10,7 @@
 
 @protocol iWidget<NSObject>
 
--(id <iWidget>) initialize: (NSString*)text;
+-(id <iWidget>) initialize: (NSMutableArray*)arguments;
 -(CGRect) getRecommendedFrame: (CGRect)baseFrame;
 -(CGRect) getFrame;
 -(void) setFrame: (CGRect)frame;
@@ -18,5 +18,7 @@
 -(void)orientationChanged:(UIInterfaceOrientation)toInterfaceOrientation ; 
 -(void) addBodyControl:(id<iWidget>) widget;
 -(void) finilize;
+-(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
+-(void) parentChanged: (id<iWidget>)parent;
 
 @end

@@ -1,21 +1,20 @@
 //
-//  iSection.m
+//  iItem.m
 //  iPadFramework
 //
 //  Created by Nami on 1/20/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "iSection.h"
+#import "iItem.h"
 #import "NullObject.h"
+#import "iSection.h"
 #import "iTable.h"
-#import "Utilities.h"
-#import "Constants.h"
 
 
-@implementation iSection
+@implementation iItem
 
-@synthesize title, itemList;
+@synthesize text;
 
 -(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 {
@@ -23,13 +22,11 @@
 
 -(id <iWidget>) initialize: (NSMutableArray*)arguments
 {
-	itemList = [[NSMutableArray alloc] init];
-	
 	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
-		self.title = [arguments objectAtIndex:0];
+		self.text = [arguments objectAtIndex:0];
 	else 
-		self.title = @"";
-	
+		self.text = @"";
+
 	return self;
 }
 
@@ -63,7 +60,6 @@
 
 -(void) addBodyControl:(id <iWidget>) widget
 {
-	[widget parentChanged:self];
 }
 
 -(void) finilize
@@ -74,15 +70,28 @@
 //This method is called by addBodyControl method of parent to provide good level of extensibility
 -(void) parentChanged: (id<iWidget>)parent
 {
-	if ([parent isKindOfClass:[iTable class]])
+	if ([parent isKindOfClass:[iSection class]])
 	{
-		[[parent sectionList] addObject:self];		
+		iSection* section = (iSection*)parent;
+		[section.itemList addObject:self];
 		return;
 	}
 	
-	//section can only be added to table
-	[Utilities ShowError:self title:MSG_WRONG_SCREEN_STRUCTURE content:@"Section can only be added to a Table"];
-	
+	if ([parent isKindOfClass:[iTable class]])
+	{
+		iSection* section;
+		iTable* table = (iTable*)parent;
+		if ([table.sectionList count] == 0)
+		{
+			section = [[iSection alloc] initialize:[[NSMutableArray alloc] init]];
+			[table.sectionList addObject:section];
+		}
+		
+		section = [table.sectionList objectAtIndex:0];
+		[section.itemList addObject:self];
+		return;
+	}
 }
+
 
 @end

@@ -13,14 +13,12 @@
 
 @interface iTable : NSObject <iWidget> {
 	@private iTableViewController* tableViewController;
-	@private int numberOfSections;
-	@private int numberofRowInSection;
+    @private NSMutableArray* sectionList;
 	@private NSString* title;
 }
 
 @property (nonatomic, retain, readwrite) iTableViewController* tableViewController;
-@property (readwrite) int numberOfSections;
-@property (readwrite) int numberofRowInSection;
+@property (retain, nonatomic, readwrite) NSMutableArray* sectionList;
 @property (retain, readwrite) NSString* title;
 
 @end

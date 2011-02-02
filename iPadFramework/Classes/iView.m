@@ -13,7 +13,11 @@
 
 CGRect lastInnerControlFrame;
 
--(id <iWidget>) initialize: (NSString*)text
+-(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
+{
+}
+
+-(id <iWidget>) initialize: (NSMutableArray*)arguments
 {
 	lastInnerControlFrame = CGRectMake(0, 0, 0, 0);
 }
@@ -46,6 +50,8 @@ CGRect lastInnerControlFrame;
 	[widget setFrame:[widget getRecommendedFrame: lastInnerControlFrame]];
 	[self.view addSubview:[widget getView]];
 	lastInnerControlFrame = [widget getFrame];
+
+	[widget parentChanged:self];
 }
 
 -(void) finilize

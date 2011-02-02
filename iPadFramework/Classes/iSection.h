@@ -10,7 +10,11 @@
 #import "iWidget.h"
 
 @interface iSection : NSObject <iWidget> {
-
+	NSMutableArray* itemList;
+	NSString* title;
 }
+
+@property (retain, nonatomic) NSMutableArray* itemList;
+@property NSString* title;
 
 @end
