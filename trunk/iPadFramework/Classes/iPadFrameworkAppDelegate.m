@@ -27,11 +27,12 @@
 	
 	root *aRoot = [[root alloc]init];
 	
-	[aRoot initialize:@""];
+	NSMutableArray* arguments = [[NSMutableArray alloc]init];
+	aRoot.window = window;
+	[aRoot initialize:arguments];
 	
-	[window addSubview:aRoot.view];
-	
-	//SampleTable *aTable = [[SampleTable alloc]initWithStyle:UITableViewStyleGrouped];
+//	[window addSubview:aRoot.view];
+//  SampleTable *aTable = [[SampleTable alloc]initWithStyle:UITableViewStyleGrouped];
 //	[window addSubview:aTable.view];
 //	
     [window makeKeyAndVisible];
