@@ -10,7 +10,13 @@
 
 
 @interface NSSelector : NSObject {
-
+	SEL method;
+	id target;
 }
+
+@property (readwrite, retain) SEL method;
+@property (readwrite, retain) id target;
+
+-(NSSelector*) initWithSelector: (SEL) selector target:(id)_target;
 
 @end
