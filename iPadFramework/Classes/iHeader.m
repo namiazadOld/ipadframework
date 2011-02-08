@@ -12,7 +12,7 @@
 
 
 @implementation iHeader
-@synthesize title;
+@synthesize title, rightButton;
 
 -(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 {
@@ -58,7 +58,7 @@
 
 -(void) addBodyControl:(id <iWidget>) widget
 {
-	
+	[widget parentChanged:self];
 }
 
 -(void) finilize
@@ -73,6 +73,9 @@
 		iView* view = (iView*)parent;
 		[view.navigationController setNavigationBarHidden:NO];
 		[view.navigationItem setTitle: self.title];
+		
+		if (self.rightButton != NULL)
+			view.navigationItem.rightBarButtonItem = self.rightButton;
 	}
 }
 
