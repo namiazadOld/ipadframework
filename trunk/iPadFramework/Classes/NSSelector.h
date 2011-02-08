@@ -14,7 +14,7 @@
 	id target;
 }
 
-@property (readwrite, retain) SEL method;
+@property (readwrite, assign) SEL method;
 @property (readwrite, retain) id target;
 
 -(NSSelector*) initWithSelector: (SEL) selector target:(id)_target;
