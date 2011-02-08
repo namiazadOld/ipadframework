@@ -8,6 +8,7 @@
 
 #import "iButton.h"
 #import "NullObject.h"
+#import "NSSelector.h"
 
 
 @implementation iButton
@@ -29,6 +30,12 @@ CGRect lastInnerControlFrame;
 	
 	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
 		text = [arguments objectAtIndex:0];
+	
+	if (![[arguments objectAtIndex:1] isKindOfClass:[NullObject class]])
+	{
+		NSSelector* methodSelector = (NSSelector*)[arguments objectAtIndex:1];
+		[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
+	}
 	
 	[self.button setTitle:text forState:UIControlStateNormal];
 	return self;
@@ -65,6 +72,11 @@ CGRect lastInnerControlFrame;
 }
 
 -(void) finilize
+{
+	
+}
+
+-(void) parentChanged: (id<iWidget>)parent
 {
 	
 }

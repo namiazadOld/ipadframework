@@ -25,7 +25,7 @@
 {
 	itemList = [[NSMutableArray alloc] init];
 	
-	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
+	if ([arguments count] > 0 && ![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
 		self.title = [arguments objectAtIndex:0];
 	else 
 		self.title = @"";

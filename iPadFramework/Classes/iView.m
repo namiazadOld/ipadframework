@@ -53,7 +53,7 @@ CGRect lastInnerControlFrame;
 	UIView* view = [widget getView];
 	
 	if (view != NULL)
-		[self.view addSubview:[widget getView]];
+		[self.view addSubview:view];
 	
 	lastInnerControlFrame = [widget getFrame];
 
