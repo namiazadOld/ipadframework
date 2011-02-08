@@ -20,10 +20,11 @@ CGRect lastInnerControlFrame;
 -(id <iWidget>) initialize: (NSMutableArray*)arguments
 {
 	lastInnerControlFrame = CGRectMake(0, 0, 0, 0);
+	return self;
 }
 
 -(CGRect) getRecommendedFrame: (CGRect)baseFrame{
-	
+	return CGRectMake(0.0, 0.0, 0.0, 0.0);
 }
 
 -(CGRect) getFrame
@@ -48,7 +49,12 @@ CGRect lastInnerControlFrame;
 -(void) addBodyControl:(id <iWidget>) widget
 {
 	[widget setFrame:[widget getRecommendedFrame: lastInnerControlFrame]];
-	[self.view addSubview:[widget getView]];
+	
+	UIView* view = [widget getView];
+	
+	if (view != NULL)
+		[self.view addSubview:[widget getView]];
+	
 	lastInnerControlFrame = [widget getFrame];
 
 	[widget parentChanged:self];

@@ -1,5 +1,5 @@
 //
-//  iHeader.h
+//  iRightButton.h
 //  iPadFramework
 //
 //  Created by Nami on 2/2/11.
@@ -10,10 +10,10 @@
 #import "iWidget.h"
 
 
-@interface iHeader : NSObject <iWidget>{
-		NSString* title;
-		UIBarButtonItem* rightButton;
+@interface iRightButton : NSObject <iWidget>{
+	UIBarButtonItem* button;
 }
-@property NSString* title;
-@property UIBarButtonItem* rightButton;
+
+@property (nonatomic, retain) UIBarButtonItem* button;
+
 @end
