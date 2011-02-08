@@ -11,6 +11,7 @@
 #import "iHeader.h"
 #import "Utilities.h"
 #import "Constants.h"
+#import "NSSelector.h"
 
 
 @implementation iRightButton
@@ -22,6 +23,7 @@ CGRect lastInnerControlFrame;
 -(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 {
 	[self.button setAction:action];
+	[self.button setTarget:target];
 }
 
 -(id <iWidget>) initialize: (NSMutableArray*) arguments
@@ -33,11 +35,14 @@ CGRect lastInnerControlFrame;
 		self.button.title = [arguments objectAtIndex:0];
 	
 	if (![[arguments objectAtIndex:1] isKindOfClass:[NullObject class]])
-		[self.button setAction:(SEL)[arguments objectAtIndex:1]];
-	
+	{
+		NSSelector* methodSelector = (NSSelector*)[arguments objectAtIndex:1];
+		[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
+	}
 	
 	return self;
 }
+
 
 -(CGRect) getRecommendedFrame: (CGRect)baseFrame
 {
