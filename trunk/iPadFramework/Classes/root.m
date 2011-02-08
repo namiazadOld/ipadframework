@@ -9,14 +9,13 @@
 #import "iTable.h"
 #import "iSection.h"
 #import "iItem.h"
-
-
+#import "Utilities.h"
 
 
 
 
 #import "iHeader.h"
-#import "iButton.h"
+#import "iRightButton.h"
 
 @implementation root
 @synthesize window;
@@ -31,207 +30,196 @@
 	NSStack* containerStack = [[NSStack alloc]init];
 	[containerStack push:self];
 	
-	id tmp492 = @"MyHeader";
+	id tmp134 = @"MyHeader";
 	
-	//changing iHeader_ControlCall23 arguments to an array
+	//changing iHeader_ControlCall70 arguments to an array
 	
-	NSMutableArray* arguments_iHeader_ControlCall230 = [[NSMutableArray alloc] init];
+	NSMutableArray* arguments_iHeader_ControlCall700 = [[NSMutableArray alloc] init];
 	
-	[arguments_iHeader_ControlCall230 addObject:tmp492];
+	[arguments_iHeader_ControlCall700 addObject:tmp134];
 	
-	//initializing iHeader_ControlCall23 control
-	iHeader* iHeader_ControlCall23 = [[iHeader alloc]initialize:arguments_iHeader_ControlCall230];
-	//push iHeader_ControlCall23 to stack to add innert controls
-	[containerStack push:iHeader_ControlCall23];
+	//initializing iHeader_ControlCall70 control
+	iHeader* iHeader_ControlCall70 = [[iHeader alloc]initialize:arguments_iHeader_ControlCall700];
+	//push iHeader_ControlCall70 to stack to add innert controls
+	[containerStack push:iHeader_ControlCall70];
 	
-	id tmp491 = @"";
-	id tmp490 = @"Nami";
+	SEL tmp133 = @selector(Callback4:);
+	id  tmp132 = @"Next Screen";
 	
-	//changing iButton_ControlCall24 arguments to an array
+	//changing iRightButton_ControlCall71 arguments to an array
 	
-	NSMutableArray* arguments_iButton_ControlCall240 = [[NSMutableArray alloc] init];
+	NSMutableArray* arguments_iRightButton_ControlCall710 = [[NSMutableArray alloc] init];
 	
-	[arguments_iButton_ControlCall240 addObject:tmp490];
-	[arguments_iButton_ControlCall240 addObject:tmp491];
+	[arguments_iRightButton_ControlCall710 addObject:tmp132];
+	[arguments_iRightButton_ControlCall710 addObject:tmp133];
 	
-	//initializing iButton_ControlCall24 control
-	iButton* iButton_ControlCall24 = [[iButton alloc]initialize:arguments_iButton_ControlCall240];
-	//push iButton_ControlCall24 to stack to add innert controls
-	[containerStack push:iButton_ControlCall24];
+	//initializing iRightButton_ControlCall71 control
+	iRightButton* iRightButton_ControlCall71 = [[iRightButton alloc]initialize:arguments_iRightButton_ControlCall710];
+	//push iRightButton_ControlCall71 to stack to add innert controls
+	[containerStack push:iRightButton_ControlCall71];
 	
-	//pop iButton_ControlCall24
+	//pop iRightButton_ControlCall71
 	[containerStack pop];
-	[iButton_ControlCall24 finilize];
-	[[containerStack top] addBodyControl:iButton_ControlCall24];
+	[iRightButton_ControlCall71 finilize];
+	[[containerStack top] addBodyControl:iRightButton_ControlCall71];
 	
-	//pop iHeader_ControlCall23
+	//pop iHeader_ControlCall70
 	[containerStack pop];
-	[iHeader_ControlCall23 finilize];
-	[[containerStack top] addBodyControl:iHeader_ControlCall23];
+	[iHeader_ControlCall70 finilize];
+	[[containerStack top] addBodyControl:iHeader_ControlCall70];
 	
-	id tmp493 = @"Wrong Section";
 	
-	//changing iSection_ControlCall25 arguments to an array
+	//changing iTable_ControlCall72 arguments to an array
 	
-	NSMutableArray* arguments_iSection_ControlCall250 = [[NSMutableArray alloc] init];
+	NSMutableArray* arguments_iTable_ControlCall720 = [[NSMutableArray alloc] init];
 	
-	[arguments_iSection_ControlCall250 addObject:tmp493];
 	
-	//initializing iSection_ControlCall25 control
-	iSection* iSection_ControlCall25 = [[iSection alloc]initialize:arguments_iSection_ControlCall250];
-	//push iSection_ControlCall25 to stack to add innert controls
-	[containerStack push:iSection_ControlCall25];
+	//initializing iTable_ControlCall72 control
+	iTable* iTable_ControlCall72 = [[iTable alloc]initialize:arguments_iTable_ControlCall720];
+	//push iTable_ControlCall72 to stack to add innert controls
+	[containerStack push:iTable_ControlCall72];
 	
-	//pop iSection_ControlCall25
+	id tmp137 = @"First Section";
+	
+	//changing iSection_ControlCall73 arguments to an array
+	
+	NSMutableArray* arguments_iSection_ControlCall730 = [[NSMutableArray alloc] init];
+	
+	[arguments_iSection_ControlCall730 addObject:tmp137];
+	
+	//initializing iSection_ControlCall73 control
+	iSection* iSection_ControlCall73 = [[iSection alloc]initialize:arguments_iSection_ControlCall730];
+	//push iSection_ControlCall73 to stack to add innert controls
+	[containerStack push:iSection_ControlCall73];
+	
+	id tmp135 = @"Nami";
+	
+	//changing iItem_ControlCall74 arguments to an array
+	
+	NSMutableArray* arguments_iItem_ControlCall740 = [[NSMutableArray alloc] init];
+	
+	[arguments_iItem_ControlCall740 addObject:tmp135];
+	
+	//initializing iItem_ControlCall74 control
+	iItem* iItem_ControlCall74 = [[iItem alloc]initialize:arguments_iItem_ControlCall740];
+	//push iItem_ControlCall74 to stack to add innert controls
+	[containerStack push:iItem_ControlCall74];
+	
+	//pop iItem_ControlCall74
 	[containerStack pop];
-	[iSection_ControlCall25 finilize];
-	[[containerStack top] addBodyControl:iSection_ControlCall25];
+	[iItem_ControlCall74 finilize];
+	[[containerStack top] addBodyControl:iItem_ControlCall74];
 	
+	id tmp136 = @"Nima";
 	
-	//changing iTable_ControlCall26 arguments to an array
+	//changing iItem_ControlCall75 arguments to an array
 	
-	NSMutableArray* arguments_iTable_ControlCall260 = [[NSMutableArray alloc] init];
+	NSMutableArray* arguments_iItem_ControlCall750 = [[NSMutableArray alloc] init];
 	
+	[arguments_iItem_ControlCall750 addObject:tmp136];
 	
-	//initializing iTable_ControlCall26 control
-	iTable* iTable_ControlCall26 = [[iTable alloc]initialize:arguments_iTable_ControlCall260];
-	//push iTable_ControlCall26 to stack to add innert controls
-	[containerStack push:iTable_ControlCall26];
+	//initializing iItem_ControlCall75 control
+	iItem* iItem_ControlCall75 = [[iItem alloc]initialize:arguments_iItem_ControlCall750];
+	//push iItem_ControlCall75 to stack to add innert controls
+	[containerStack push:iItem_ControlCall75];
 	
-	id tmp496 = @"First Section";
-	
-	//changing iSection_ControlCall27 arguments to an array
-	
-	NSMutableArray* arguments_iSection_ControlCall270 = [[NSMutableArray alloc] init];
-	
-	[arguments_iSection_ControlCall270 addObject:tmp496];
-	
-	//initializing iSection_ControlCall27 control
-	iSection* iSection_ControlCall27 = [[iSection alloc]initialize:arguments_iSection_ControlCall270];
-	//push iSection_ControlCall27 to stack to add innert controls
-	[containerStack push:iSection_ControlCall27];
-	
-	id tmp494 = @"Nami";
-	
-	//changing iItem_ControlCall28 arguments to an array
-	
-	NSMutableArray* arguments_iItem_ControlCall280 = [[NSMutableArray alloc] init];
-	
-	[arguments_iItem_ControlCall280 addObject:tmp494];
-	
-	//initializing iItem_ControlCall28 control
-	iItem* iItem_ControlCall28 = [[iItem alloc]initialize:arguments_iItem_ControlCall280];
-	//push iItem_ControlCall28 to stack to add innert controls
-	[containerStack push:iItem_ControlCall28];
-	
-	//pop iItem_ControlCall28
+	//pop iItem_ControlCall75
 	[containerStack pop];
-	[iItem_ControlCall28 finilize];
-	[[containerStack top] addBodyControl:iItem_ControlCall28];
+	[iItem_ControlCall75 finilize];
+	[[containerStack top] addBodyControl:iItem_ControlCall75];
 	
-	id tmp495 = @"Nima";
-	
-	//changing iItem_ControlCall29 arguments to an array
-	
-	NSMutableArray* arguments_iItem_ControlCall290 = [[NSMutableArray alloc] init];
-	
-	[arguments_iItem_ControlCall290 addObject:tmp495];
-	
-	//initializing iItem_ControlCall29 control
-	iItem* iItem_ControlCall29 = [[iItem alloc]initialize:arguments_iItem_ControlCall290];
-	//push iItem_ControlCall29 to stack to add innert controls
-	[containerStack push:iItem_ControlCall29];
-	
-	//pop iItem_ControlCall29
+	//pop iSection_ControlCall73
 	[containerStack pop];
-	[iItem_ControlCall29 finilize];
-	[[containerStack top] addBodyControl:iItem_ControlCall29];
+	[iSection_ControlCall73 finilize];
+	[[containerStack top] addBodyControl:iSection_ControlCall73];
 	
-	//pop iSection_ControlCall27
+	id tmp141 = @"Second Section";
+	
+	//changing iSection_ControlCall76 arguments to an array
+	
+	NSMutableArray* arguments_iSection_ControlCall760 = [[NSMutableArray alloc] init];
+	
+	[arguments_iSection_ControlCall760 addObject:tmp141];
+	
+	//initializing iSection_ControlCall76 control
+	iSection* iSection_ControlCall76 = [[iSection alloc]initialize:arguments_iSection_ControlCall760];
+	//push iSection_ControlCall76 to stack to add innert controls
+	[containerStack push:iSection_ControlCall76];
+	
+	id tmp138 = @"Zef";
+	
+	//changing iItem_ControlCall77 arguments to an array
+	
+	NSMutableArray* arguments_iItem_ControlCall770 = [[NSMutableArray alloc] init];
+	
+	[arguments_iItem_ControlCall770 addObject:tmp138];
+	
+	//initializing iItem_ControlCall77 control
+	iItem* iItem_ControlCall77 = [[iItem alloc]initialize:arguments_iItem_ControlCall770];
+	//push iItem_ControlCall77 to stack to add innert controls
+	[containerStack push:iItem_ControlCall77];
+	
+	//pop iItem_ControlCall77
 	[containerStack pop];
-	[iSection_ControlCall27 finilize];
-	[[containerStack top] addBodyControl:iSection_ControlCall27];
+	[iItem_ControlCall77 finilize];
+	[[containerStack top] addBodyControl:iItem_ControlCall77];
 	
-	id tmp500 = @"Second Section";
+	id tmp139 = @"Eelco";
 	
-	//changing iSection_ControlCall30 arguments to an array
+	//changing iItem_ControlCall78 arguments to an array
 	
-	NSMutableArray* arguments_iSection_ControlCall300 = [[NSMutableArray alloc] init];
+	NSMutableArray* arguments_iItem_ControlCall780 = [[NSMutableArray alloc] init];
 	
-	[arguments_iSection_ControlCall300 addObject:tmp500];
+	[arguments_iItem_ControlCall780 addObject:tmp139];
 	
-	//initializing iSection_ControlCall30 control
-	iSection* iSection_ControlCall30 = [[iSection alloc]initialize:arguments_iSection_ControlCall300];
-	//push iSection_ControlCall30 to stack to add innert controls
-	[containerStack push:iSection_ControlCall30];
+	//initializing iItem_ControlCall78 control
+	iItem* iItem_ControlCall78 = [[iItem alloc]initialize:arguments_iItem_ControlCall780];
+	//push iItem_ControlCall78 to stack to add innert controls
+	[containerStack push:iItem_ControlCall78];
 	
-	id tmp497 = @"Zef";
-	
-	//changing iItem_ControlCall31 arguments to an array
-	
-	NSMutableArray* arguments_iItem_ControlCall310 = [[NSMutableArray alloc] init];
-	
-	[arguments_iItem_ControlCall310 addObject:tmp497];
-	
-	//initializing iItem_ControlCall31 control
-	iItem* iItem_ControlCall31 = [[iItem alloc]initialize:arguments_iItem_ControlCall310];
-	//push iItem_ControlCall31 to stack to add innert controls
-	[containerStack push:iItem_ControlCall31];
-	
-	//pop iItem_ControlCall31
+	//pop iItem_ControlCall78
 	[containerStack pop];
-	[iItem_ControlCall31 finilize];
-	[[containerStack top] addBodyControl:iItem_ControlCall31];
+	[iItem_ControlCall78 finilize];
+	[[containerStack top] addBodyControl:iItem_ControlCall78];
 	
-	id tmp498 = @"Eelco";
+	id tmp140 = @"Danny";
 	
-	//changing iItem_ControlCall32 arguments to an array
+	//changing iItem_ControlCall79 arguments to an array
 	
-	NSMutableArray* arguments_iItem_ControlCall320 = [[NSMutableArray alloc] init];
+	NSMutableArray* arguments_iItem_ControlCall790 = [[NSMutableArray alloc] init];
 	
-	[arguments_iItem_ControlCall320 addObject:tmp498];
+	[arguments_iItem_ControlCall790 addObject:tmp140];
 	
-	//initializing iItem_ControlCall32 control
-	iItem* iItem_ControlCall32 = [[iItem alloc]initialize:arguments_iItem_ControlCall320];
-	//push iItem_ControlCall32 to stack to add innert controls
-	[containerStack push:iItem_ControlCall32];
+	//initializing iItem_ControlCall79 control
+	iItem* iItem_ControlCall79 = [[iItem alloc]initialize:arguments_iItem_ControlCall790];
+	//push iItem_ControlCall79 to stack to add innert controls
+	[containerStack push:iItem_ControlCall79];
 	
-	//pop iItem_ControlCall32
+	//pop iItem_ControlCall79
 	[containerStack pop];
-	[iItem_ControlCall32 finilize];
-	[[containerStack top] addBodyControl:iItem_ControlCall32];
+	[iItem_ControlCall79 finilize];
+	[[containerStack top] addBodyControl:iItem_ControlCall79];
 	
-	id tmp499 = @"Danny";
-	
-	//changing iItem_ControlCall33 arguments to an array
-	
-	NSMutableArray* arguments_iItem_ControlCall330 = [[NSMutableArray alloc] init];
-	
-	[arguments_iItem_ControlCall330 addObject:tmp499];
-	
-	//initializing iItem_ControlCall33 control
-	iItem* iItem_ControlCall33 = [[iItem alloc]initialize:arguments_iItem_ControlCall330];
-	//push iItem_ControlCall33 to stack to add innert controls
-	[containerStack push:iItem_ControlCall33];
-	
-	//pop iItem_ControlCall33
+	//pop iSection_ControlCall76
 	[containerStack pop];
-	[iItem_ControlCall33 finilize];
-	[[containerStack top] addBodyControl:iItem_ControlCall33];
+	[iSection_ControlCall76 finilize];
+	[[containerStack top] addBodyControl:iSection_ControlCall76];
 	
-	//pop iSection_ControlCall30
+	//pop iTable_ControlCall72
 	[containerStack pop];
-	[iSection_ControlCall30 finilize];
-	[[containerStack top] addBodyControl:iSection_ControlCall30];
-	
-	//pop iTable_ControlCall26
-	[containerStack pop];
-	[iTable_ControlCall26 finilize];
-	[[containerStack top] addBodyControl:iTable_ControlCall26];
+	[iTable_ControlCall72 finilize];
+	[[containerStack top] addBodyControl:iTable_ControlCall72];
 	
 	//pop screen
 	[containerStack pop];
 }
+
+
+-(void)Callback4:(id)sender{
+	//CALL SCREEN;
+	[Utilities ShowError:self title:@"Hello" content:@"Method"];
+}
+
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES;
@@ -249,7 +237,10 @@
 #import "iWidget.h"
 #import "iView.h"
 #import "root.h"
-#import "iButton.h"
+#import "iTable.h"
+#import "iItem.h"
+
+
 
 @interface nextScreen : iView <iWidget>{
 }
@@ -263,29 +254,81 @@
 	NSStack* containerStack = [[NSStack alloc]init];
 	[containerStack push:self];
 	
-	id tmp501 = @"I am placed in the next screen";
-	id tmp502 = [[NullObject alloc]init];
 	
-	//changing iButton_ControlCall34 arguments to an array
+	//changing iTable_ControlCall80 arguments to an array
 	
-	NSMutableArray* arguments_iButton_ControlCall340 = [[NSMutableArray alloc] init];
+	NSMutableArray* arguments_iTable_ControlCall800 = [[NSMutableArray alloc] init];
 	
-	[arguments_iButton_ControlCall340 addObject:tmp501];
-	[arguments_iButton_ControlCall340 addObject:tmp502];
 	
-	//initializing iButton_ControlCall34 control
-	iButton* iButton_ControlCall34 = [[iButton alloc]initialize:arguments_iButton_ControlCall340];
-	//push iButton_ControlCall34 to stack to add innert controls
-	[containerStack push:iButton_ControlCall34];
+	//initializing iTable_ControlCall80 control
+	iTable* iTable_ControlCall80 = [[iTable alloc]initialize:arguments_iTable_ControlCall800];
+	//push iTable_ControlCall80 to stack to add innert controls
+	[containerStack push:iTable_ControlCall80];
 	
-	//pop iButton_ControlCall34
+	id tmp142 = @"Netherlands";
+	
+	//changing iItem_ControlCall81 arguments to an array
+	
+	NSMutableArray* arguments_iItem_ControlCall810 = [[NSMutableArray alloc] init];
+	
+	[arguments_iItem_ControlCall810 addObject:tmp142];
+	
+	//initializing iItem_ControlCall81 control
+	iItem* iItem_ControlCall81 = [[iItem alloc]initialize:arguments_iItem_ControlCall810];
+	//push iItem_ControlCall81 to stack to add innert controls
+	[containerStack push:iItem_ControlCall81];
+	
+	//pop iItem_ControlCall81
 	[containerStack pop];
-	[iButton_ControlCall34 finilize];
-	[[containerStack top] addBodyControl:iButton_ControlCall34];
+	[iItem_ControlCall81 finilize];
+	[[containerStack top] addBodyControl:iItem_ControlCall81];
+	
+	id tmp143 = @"France";
+	
+	//changing iItem_ControlCall82 arguments to an array
+	
+	NSMutableArray* arguments_iItem_ControlCall820 = [[NSMutableArray alloc] init];
+	
+	[arguments_iItem_ControlCall820 addObject:tmp143];
+	
+	//initializing iItem_ControlCall82 control
+	iItem* iItem_ControlCall82 = [[iItem alloc]initialize:arguments_iItem_ControlCall820];
+	//push iItem_ControlCall82 to stack to add innert controls
+	[containerStack push:iItem_ControlCall82];
+	
+	//pop iItem_ControlCall82
+	[containerStack pop];
+	[iItem_ControlCall82 finilize];
+	[[containerStack top] addBodyControl:iItem_ControlCall82];
+	
+	id tmp144 = @"Italy";
+	
+	//changing iItem_ControlCall83 arguments to an array
+	
+	NSMutableArray* arguments_iItem_ControlCall830 = [[NSMutableArray alloc] init];
+	
+	[arguments_iItem_ControlCall830 addObject:tmp144];
+	
+	//initializing iItem_ControlCall83 control
+	iItem* iItem_ControlCall83 = [[iItem alloc]initialize:arguments_iItem_ControlCall830];
+	//push iItem_ControlCall83 to stack to add innert controls
+	[containerStack push:iItem_ControlCall83];
+	
+	//pop iItem_ControlCall83
+	[containerStack pop];
+	[iItem_ControlCall83 finilize];
+	[[containerStack top] addBodyControl:iItem_ControlCall83];
+	
+	//pop iTable_ControlCall80
+	[containerStack pop];
+	[iTable_ControlCall80 finilize];
+	[[containerStack top] addBodyControl:iTable_ControlCall80];
 	
 	//pop screen
 	[containerStack pop];
 }
+
+
 
 -(BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
 	return YES;
