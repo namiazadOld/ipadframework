@@ -11,4 +11,13 @@
 
 @implementation NSSelector
 
+@synthesize method, target;
+
+-(NSSelector*) initWithSelector: (SEL) selector target:(id)_target
+{
+	self.method = selector;
+	self.target = _target;
+	return self;
+}
+
 @end
