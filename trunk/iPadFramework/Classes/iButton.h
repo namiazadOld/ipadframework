@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import "iWidget.h"
+#import "iBaseControl.h"
 
-
-@interface iButton : NSObject <iWidget> {
+@interface iButton : iBaseControl {
 	UIButton* button;
 }
 

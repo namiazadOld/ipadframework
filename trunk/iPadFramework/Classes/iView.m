@@ -10,40 +10,23 @@
 
 
 @implementation iView
-
-CGRect lastInnerControlFrame;
-
--(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
-{
-}
+@synthesize viewController;
 
 -(id <iWidget>) initialize: (NSMutableArray*)arguments
 {
+	viewController = [[UIViewController alloc]init];
 	lastInnerControlFrame = CGRectMake(0, 0, 0, 0);
 	return self;
 }
 
--(CGRect) getRecommendedFrame: (CGRect)baseFrame{
-	return CGRectMake(0.0, 0.0, 0.0, 0.0);
-}
-
 -(CGRect) getFrame
 {
-	return self.view.frame;
-}
-
--(void)setFrame:(CGRect)frame
-{
+	return self.viewController.view.frame;
 }
 
 -(UIView*) getView
 {
-	return self.view;
-}
-
-- (void)orientationChanged:(UIInterfaceOrientation)toInterfaceOrientation
-{
-	
+	return self.viewController.view;
 }
 
 -(void) addBodyControl:(id <iWidget>) widget
@@ -53,17 +36,11 @@ CGRect lastInnerControlFrame;
 	UIView* view = [widget getView];
 	
 	if (view != NULL)
-		[self.view addSubview:view];
+		[self.viewController.view addSubview:view];
 	
 	lastInnerControlFrame = [widget getFrame];
 
 	[widget parentChanged:self];
 }
-
--(void) finilize
-{
-	
-}
-
 
 @end

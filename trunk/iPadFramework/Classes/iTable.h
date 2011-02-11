@@ -9,9 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "iWidget.h"
 #import "iTableViewController.h"
+#import "iBaseControl.h"
 
 
-@interface iTable : NSObject <iWidget> {
+@interface iTable : iBaseControl {
 	@private iTableViewController* tableViewController;
     @private NSMutableArray* sectionList;
 	@private NSString* title;

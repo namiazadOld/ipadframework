@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "iWidget.h"
+#import "iBaseControl.h"
 
-@interface iView : UIViewController <iWidget> {
+@interface iView : iBaseControl {
 
+	UIViewController* viewController;
 }
+
+@property (nonatomic, retain) UIViewController* viewController;
 
 @end

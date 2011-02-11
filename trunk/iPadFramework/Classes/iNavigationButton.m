@@ -1,28 +1,27 @@
 //
-//  iButton.m
+//  iNavigationButton.m
 //  iPadFramework
 //
-//  Created by Nami on 1/4/11.
+//  Created by Nami on 2/9/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "iButton.h"
+#import "iNavigationButton.h"
 #import "NullObject.h"
 #import "NSSelector.h"
 
 
-@implementation iButton
+@implementation iNavigationButton
 
 @synthesize button;
 
 -(id <iWidget>) initialize: (NSMutableArray*) arguments
 {
-	self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-	
-	NSString* text = @"";
+	self.button = [[UIBarButtonItem alloc] init];
+	[self.button setStyle:UIBarButtonSystemItemFastForward];
 	
 	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
-		text = [arguments objectAtIndex:0];
+		self.button.title = [arguments objectAtIndex:0];
 	
 	if (![[arguments objectAtIndex:1] isKindOfClass:[NullObject class]])
 	{
@@ -30,7 +29,6 @@
 		[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
 	}
 	
-	[self.button setTitle:text forState:UIControlStateNormal];
 	return self;
 }
 
@@ -41,22 +39,18 @@
 
 -(CGRect) getFrame
 {
-	return self.button.frame;
+	return CGRectMake(0.0, 0.0, self.button.width, 50.0);
 }
 
 -(void)setFrame:(CGRect)frame
 {
-	self.button.frame = frame;
-}
-
--(UIView*) getView
-{
-	return self.button;
+	[self.button setWidth:frame.size.width];
 }
 
 -(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 {
-	[self.button addTarget:target action:action forControlEvents:controlEvents];
+	[self.button setAction:action];
+	[self.button setTarget:target];
 }
 
 @end

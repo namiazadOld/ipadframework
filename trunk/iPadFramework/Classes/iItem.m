@@ -16,10 +16,6 @@
 
 @synthesize text;
 
--(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
-{
-}
-
 -(id <iWidget>) initialize: (NSMutableArray*)arguments
 {
 	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
@@ -36,35 +32,6 @@
 					  baseFrame.origin.y + baseFrame.size.height, 
 					  baseFrame.size.width, 
 					  baseFrame.size.height);
-}
-
--(CGRect) getFrame
-{
-	return CGRectMake(0, 0, 0, 0);
-}
-
--(void)setFrame:(CGRect)frame
-{
-	
-}
-
--(UIView*) getView
-{
-	return NULL;
-}
-
-- (void)orientationChanged:(UIInterfaceOrientation)toInterfaceOrientation
-{
-	
-}
-
--(void) addBodyControl:(id <iWidget>) widget
-{
-}
-
--(void) finilize
-{
-	
 }
 
 //This method is called by addBodyControl method of parent to provide good level of extensibility
