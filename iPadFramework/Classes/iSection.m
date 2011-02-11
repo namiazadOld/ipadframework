@@ -17,10 +17,6 @@
 
 @synthesize title, itemList;
 
--(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
-{
-}
-
 -(id <iWidget>) initialize: (NSMutableArray*)arguments
 {
 	itemList = [[NSMutableArray alloc] init];
@@ -41,42 +37,14 @@
 					  baseFrame.size.height);
 }
 
--(CGRect) getFrame
-{
-	return CGRectMake(0, 0, 0, 0);
-}
-
--(void)setFrame:(CGRect)frame
-{
-	
-}
-
--(UIView*) getView
-{
-	return NULL;
-}
-
-- (void)orientationChanged:(UIInterfaceOrientation)toInterfaceOrientation
-{
-	
-}
-
--(void) addBodyControl:(id <iWidget>) widget
-{
-	[widget parentChanged:self];
-}
-
--(void) finilize
-{
-	
-}
 
 //This method is called by addBodyControl method of parent to provide good level of extensibility
 -(void) parentChanged: (id<iWidget>)parent
 {
 	if ([parent isKindOfClass:[iTable class]])
 	{
-		[[parent sectionList] addObject:self];		
+		iTable* table = (iTable*)parent;
+		[table.sectionList addObject:self];		
 		return;
 	}
 	

@@ -8,12 +8,18 @@
 
 #import <Foundation/Foundation.h>
 #import "iWidget.h"
+#import "iBaseControl.h"
 
 
-@interface iHeader : NSObject <iWidget>{
+@interface iHeader : iBaseControl {
+	
 		NSString* title;
 		UIBarButtonItem* rightButton;
+		UIBarButtonItem* leftButton;
 }
-@property NSString* title;
-@property UIBarButtonItem* rightButton;
+
+@property (retain) NSString* title;
+@property (retain) UIBarButtonItem* rightButton;
+@property (retain) UIBarButtonItem* leftButton;
+
 @end

@@ -12,11 +12,7 @@
 
 
 @implementation iHeader
-@synthesize title, rightButton;
-
--(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
-{
-}
+@synthesize title, rightButton, leftButton;
 
 -(id <iWidget>) initialize: (NSMutableArray*)arguments
 {
@@ -36,46 +32,19 @@
 					  baseFrame.size.height);
 }
 
--(CGRect) getFrame
-{
-	return CGRectMake(0, 0, 0, 0);
-}
-
--(void)setFrame:(CGRect)frame
-{
-	
-}
-
--(UIView*) getView
-{
-	return NULL;
-}
-
-- (void)orientationChanged:(UIInterfaceOrientation)toInterfaceOrientation
-{
-	
-}
-
--(void) addBodyControl:(id <iWidget>) widget
-{
-	[widget parentChanged:self];
-}
-
--(void) finilize
-{
-	
-}
-
 -(void) parentChanged: (id<iWidget>)parent
 {
 	if ([parent isKindOfClass:[iView class]])
 	{
 		iView* view = (iView*)parent;
-		[view.navigationController setNavigationBarHidden:NO];
-		[view.navigationItem setTitle: self.title];
+		[view.viewController.navigationController setNavigationBarHidden:NO];
+		[view.viewController.navigationItem setTitle: self.title];
 		
 		if (self.rightButton != NULL)
-			view.navigationItem.rightBarButtonItem = self.rightButton;
+			view.viewController.navigationItem.rightBarButtonItem = self.rightButton;
+		
+		if (self.leftButton != NULL)
+			view.viewController.navigationItem.leftBarButtonItem = self.leftButton;
 	}
 }
 

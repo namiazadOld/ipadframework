@@ -8,9 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import "iWidget.h"
+#import "iBaseControl.h"
 
 
-@interface iItem : NSObject <iWidget> {
+@interface iItem : iBaseControl{
 	NSString* text;
 }
 

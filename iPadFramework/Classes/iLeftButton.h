@@ -1,8 +1,8 @@
 //
-//  iRightButton.h
+//  iLeftButton.h
 //  iPadFramework
 //
-//  Created by Nami on 2/2/11.
+//  Created by Nami on 2/9/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
@@ -11,7 +11,8 @@
 #import "iNavigationButton.h"
 
 
-@interface iRightButton :  iNavigationButton <iWidget>{
+
+@interface iLeftButton : iNavigationButton<iWidget> {
 
 }
 

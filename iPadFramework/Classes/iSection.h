@@ -8,13 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "iWidget.h"
+#import "iBaseControl.h"
 
-@interface iSection : NSObject <iWidget> {
+@interface iSection : iBaseControl {
 	NSMutableArray* itemList;
 	NSString* title;
 }
 
-@property (retain, nonatomic) NSMutableArray* itemList;
-@property NSString* title;
+@property (nonatomic, retain) NSMutableArray* itemList;
+@property (retain) NSString* title;
 
 @end
