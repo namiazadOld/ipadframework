@@ -12,10 +12,11 @@
 @implementation iBaseControl
 @synthesize boundObjects, locked;
 
+
 -(id <iWidget>) initialize: (NSMutableArray*)arguments
 {
 	boundObjects = [[NSMutableDictionary alloc]init];
-	[self addTarget:self action:@selector(eventOccured:) forControlEvents:UIControlEventAllEvents];
+	[[self getActualContol] addTarget:self action:@selector(eventOccured:) forControlEvents:UIControlEventAllEvents];
 
 	return self;
 }
@@ -72,13 +73,16 @@
 		NSArray* allKeys = [boundObjects allKeys];
 		for (int i = 0; i < [allKeys count]; i++)
 		{
-			BindableObject* bo = [boundObjects objectForKey:[allKeys objectAtIndex:i]];
+			NSString* property = [allKeys objectAtIndex:i];
+			BindableObject* bo = [boundObjects objectForKey:property];
 			self.locked = YES;
-			bo.value = [self valueForKey:[allKeys objectAtIndex:i]];
+			bo.value = [self valueForKey:property];
+			[property release];
 			self.locked = NO;
 		}
 	}
 }
+
 
 -(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
@@ -92,9 +96,11 @@
 			NSArray* allKeys = [boundObjects allKeys];
 			for (int i = 0; i < [allKeys count]; i++)
 			{
-				if (![[boundObjects valueForKey:[allKeys objectAtIndex:i]] isEqual:bo])
+				NSString* property = [allKeys objectAtIndex:i];
+				if (![[boundObjects valueForKey:property] isEqual:bo])
 					continue;
-				[self setValue:bo.value forKey:[allKeys objectAtIndex:i]];
+				[self setValue:bo.value forKey:property];
+				[property release];
 				break;
 			}
 			self.locked = NO;
@@ -105,7 +111,7 @@
 
 -(id)getActualContol
 {
-	
+	return NULL;
 }
 
 -(void) addBindingObject:(BindableObject*)bo forKey:(NSString*)key
