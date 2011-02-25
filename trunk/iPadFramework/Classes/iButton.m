@@ -28,6 +28,7 @@
 		if (button.currentTitle != aString)
 		{
 			[button setTitle:aString forState:button.state];
+			[aString release];
 		}
 	}
 }
