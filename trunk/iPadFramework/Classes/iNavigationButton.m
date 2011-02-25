@@ -15,13 +15,39 @@
 
 @synthesize button;
 
+//Properties Wrappers
+-(NSString*) title
+{
+	return button.title;
+}
+
+-(void)setTitle:(NSString *)aString
+{
+	@synchronized(self)
+	{
+		if (button.title != aString)
+		{
+			[button setTitle:aString];
+		}
+	}
+}
+
+
 -(id <iWidget>) initialize: (NSMutableArray*) arguments
 {
+	[super initialize:arguments];
 	self.button = [[UIBarButtonItem alloc] init];
 	[self.button setStyle:UIBarButtonSystemItemFastForward];
 	
 	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
-		self.button.title = [arguments objectAtIndex:0];
+	{
+		BindableObject* bo = (BindableObject*) [arguments objectAtIndex:0];
+		[self addBindingObject:bo forKey:@"title"];
+		[self.button setTitle:(NSString*)bo.value];
+		
+		//self.button.title = [arguments objectAtIndex:0];
+	}
+		
 	
 	if (![[arguments objectAtIndex:1] isKindOfClass:[NullObject class]])
 	{

@@ -19,12 +19,16 @@
 
 -(id <iWidget>) initialize: (NSMutableArray*)arguments
 {
+	[super initialize:arguments];
 	itemList = [[NSMutableArray alloc] init];
 	
 	if ([arguments count] > 0 && ![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
-		self.title = [arguments objectAtIndex:0];
-	else 
-		self.title = @"";
+	{
+		BindableObject* bo = (BindableObject*)[arguments objectAtIndex:0];
+		[self addBindingObject:bo forKey:@"title"];
+		
+		//self.title = [arguments objectAtIndex:0];
+	}
 	
 	return self;
 }
