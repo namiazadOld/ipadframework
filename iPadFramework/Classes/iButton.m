@@ -15,14 +15,36 @@
 
 @synthesize button;
 
+//Properties Wrappers
+-(NSString*) title
+{
+	return button.currentTitle;
+}
+
+-(void)setTitle:(NSString *)aString
+{
+	@synchronized(self)
+	{
+		if (button.currentTitle != aString)
+		{
+			[button setTitle:aString forState:button.state];
+		}
+	}
+}
+
 -(id <iWidget>) initialize: (NSMutableArray*) arguments
 {
+	[super initialize:arguments];
 	self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	
-	NSString* text = @"";
-	
 	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
-		text = [arguments objectAtIndex:0];
+	{
+		BindableObject* bo = (BindableObject*) [arguments objectAtIndex:0];
+		[self addBindingObject:bo forKey:@"title"];
+		[self.button setTitle:(NSString*)bo.value forState:UIControlStateNormal];
+		
+		//[self.button setTitle:[arguments objectAtIndex:0] forState:UIControlStateNormal];
+	}
 	
 	if (![[arguments objectAtIndex:1] isKindOfClass:[NullObject class]])
 	{
@@ -30,7 +52,6 @@
 		[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
 	}
 	
-	[self.button setTitle:text forState:UIControlStateNormal];
 	return self;
 }
 
@@ -57,6 +78,11 @@
 -(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 {
 	[self.button addTarget:target action:action forControlEvents:controlEvents];
+}
+
+-(id) getActualContol
+{
+	return self.button;
 }
 
 @end

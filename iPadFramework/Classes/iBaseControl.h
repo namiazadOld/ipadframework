@@ -8,12 +8,19 @@
 
 #import <Foundation/Foundation.h>
 #import "iWidget.h"
+#import "BindableObject.h"
 
 
 @interface iBaseControl : NSObject<iWidget> {
 	CGRect lastInnerControlFrame;
+	NSMutableDictionary* boundObjects;
+	BOOL locked;
 }
 
 @property (assign) CGRect lastInnerControlFrame;
+@property (readwrite, retain) NSMutableDictionary* boundObjects;
+@property (readwrite, assign) BOOL locked;
+
+-(void) addBindingObject:(BindableObject*)bo forKey:(NSString*)key;
 
 @end

@@ -18,8 +18,14 @@
 
 -(id <iWidget>) initialize: (NSMutableArray*)arguments
 {
+	[super initialize:arguments];
 	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
-		self.text = [arguments objectAtIndex:0];
+	{
+		BindableObject* bo = (BindableObject*)[arguments objectAtIndex:0];
+		[self addBindingObject:bo forKey:@"text"];
+		
+		//self.text = [arguments objectAtIndex:0];
+	}
 	else 
 		self.text = @"";
 

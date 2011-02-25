@@ -15,5 +15,6 @@
 }
 
 @property (nonatomic, retain) UIButton* button;
+@property (nonatomic, retain) NSString* title;
 
 @end

@@ -17,6 +17,7 @@
 
 -(id<iWidget>) initialize: (NSMutableArray*)arguments
 {
+	[super initialize:arguments];
 	sectionList = [[NSMutableArray alloc]init];
 	return self;
 }

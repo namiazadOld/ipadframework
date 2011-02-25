@@ -13,8 +13,10 @@
 
 @interface iNavigationButton : iBaseControl {
 	UIBarButtonItem* button;
+	
 }
 
 @property (nonatomic, retain) UIBarButtonItem* button;
+@property (nonatomic, retain) NSString* title;
 
 @end

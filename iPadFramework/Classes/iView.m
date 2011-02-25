@@ -14,6 +14,7 @@
 
 -(id <iWidget>) initialize: (NSMutableArray*)arguments
 {
+	[super initialize:arguments];
 	viewController = [[UIViewController alloc]init];
 	lastInnerControlFrame = CGRectMake(0, 0, 0, 0);
 	return self;
