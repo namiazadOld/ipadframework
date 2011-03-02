@@ -10,7 +10,7 @@
 
 
 @implementation iBaseControl
-@synthesize boundObjects, locked;
+@synthesize boundObjects, locked, parentWidget;
 
 
 -(id <iWidget>) initialize: (NSMutableArray*)arguments
@@ -48,6 +48,7 @@
 
 -(void) addBodyControl:(id<iWidget>) widget
 {
+	[widget setParentWidget:self];
 	[widget parentChanged:self];
 }
 
@@ -100,6 +101,8 @@
 				if (![[boundObjects valueForKey:property] isEqual:bo])
 					continue;
 				[self setValue:bo.value forKey:property];
+				if (self.parentWidget != NULL)
+					[self.parentWidget childUpdated:self];
 				[property release];
 				break;
 			}
@@ -118,6 +121,11 @@
 {
 	[boundObjects setValue:bo forKey:key];
 	[bo addObserver:self forKeyPath:@"value" options:NSKeyValueChangeNewKey context:NULL];
+}
+
+-(void) childUpdated: (id<iWidget>)child
+{
+	
 }
 
 

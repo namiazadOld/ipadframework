@@ -15,11 +15,13 @@
 	CGRect lastInnerControlFrame;
 	NSMutableDictionary* boundObjects;
 	BOOL locked;
+	iBaseControl* parentWidget;
 }
 
 @property (assign) CGRect lastInnerControlFrame;
 @property (readwrite, retain) NSMutableDictionary* boundObjects;
 @property (readwrite, assign) BOOL locked;
+@property (readwrite, retain) iBaseControl* parentWidget;
 
 -(void) addBindingObject:(BindableObject*)bo forKey:(NSString*)key;
 

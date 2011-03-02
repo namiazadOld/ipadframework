@@ -21,5 +21,6 @@
 -(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
 -(void) parentChanged: (id<iWidget>)parent;
 -(id) getActualContol;
+-(void) childUpdated: (id<iWidget>)child;
 
 @end

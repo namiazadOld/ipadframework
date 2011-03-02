@@ -57,4 +57,9 @@
 	
 }
 
+-(void) childUpdated: (id<iWidget>)child
+{
+	[self.parentWidget childUpdated:child];
+}
+
 @end
