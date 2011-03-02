@@ -58,4 +58,10 @@
 	self.tableViewController.title = self.title;
 }
 
+-(void) childUpdated: (id<iWidget>)child
+{
+	[self.tableViewController.tableView reloadData];
+	//[self.tableViewController.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
+}
+
 @end

@@ -27,7 +27,7 @@
 	{
 		if (button.currentTitle != aString)
 		{
-			[button setTitle:aString forState:button.state];
+			[button setTitle:[aString retain] forState:button.state];
 			[aString release];
 		}
 	}

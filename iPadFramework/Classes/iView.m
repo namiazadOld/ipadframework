@@ -41,6 +41,7 @@
 	
 	lastInnerControlFrame = [widget getFrame];
 
+	[widget setParentWidget:self];
 	[widget parentChanged:self];
 }
 

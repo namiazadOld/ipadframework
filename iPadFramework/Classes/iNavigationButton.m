@@ -27,7 +27,8 @@
 	{
 		if (button.title != aString)
 		{
-			[button setTitle:aString];
+			[button setTitle:[aString retain]];
+			[aString release];
 		}
 	}
 }
