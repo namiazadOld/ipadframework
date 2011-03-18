@@ -7,6 +7,7 @@
 //
 
 #import "Utilities.h"
+#import "iBaseControl.h"
 
 
 @implementation Utilities
@@ -24,5 +25,21 @@
 	[someError release];
 
 }
+
++(void) AddControl:(id <iWidget>) widget ToContainer: (iBaseControl*) container
+{
+	iBaseControl* lastControl = container.lastInnerControl;
+	[widget setFrame:[widget getRecommendedFrame:lastControl container: container]];
+	UIView* view = [widget getView];
+	
+	if (view != NULL)
+		[[container getView] addSubview:view];
+	
+	[container setLastInnerControl:widget];
+	
+	[widget setParentWidget:container];
+	[widget parentChanged:container];
+}
+
 
 @end

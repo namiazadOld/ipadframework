@@ -10,3 +10,6 @@
 
 
 NSString* const MSG_WRONG_SCREEN_STRUCTURE = @"Screen structure is not correct";
+float	  const DEFAULT_MARGIN = 10.0;
+float	  const VERTICAL_WIDTH = 768;
+float	  const VERTICAL_HEIGHT = 1004;
