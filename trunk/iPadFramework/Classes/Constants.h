@@ -10,5 +10,7 @@
 
 
 extern NSString * const MSG_WRONG_SCREEN_STRUCTURE;
+extern float	  const DEFAULT_MARGIN;
+extern float	  const VERTICAL_WIDTH;
+extern float	  const VERTICAL_HEIGHT;
 
-@end
