@@ -10,8 +10,8 @@
 
 @protocol iWidget<NSObject>
 
--(id <iWidget>) initialize: (NSMutableArray*)arguments;
--(CGRect) getRecommendedFrame: (CGRect)baseFrame;
+-(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent;
+-(CGRect) getRecommendedFrame: (id<iWidget>) lastControl container:(id<iWidget>)parent;
 -(CGRect) getFrame;
 -(void) setFrame: (CGRect)frame;
 -(UIView*) getView;

@@ -9,6 +9,7 @@
 #import "iButton.h"
 #import "NullObject.h"
 #import "NSSelector.h"
+#import "Constants.h"
 
 
 @implementation iButton
@@ -33,32 +34,39 @@
 	}
 }
 
--(id <iWidget>) initialize: (NSMutableArray*) arguments
+-(id <iWidget>) initialize: (NSMutableArray*) arguments container: (id<iWidget>)parent
 {
-	[super initialize:arguments];
+	[super initialize:arguments container: parent];
 	self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
 	
-	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
-	{
-		BindableObject* bo = (BindableObject*) [arguments objectAtIndex:0];
-		[self addBindingObject:bo forKey:@"title"];
-		[self.button setTitle:(NSString*)bo.value forState:UIControlStateNormal];
-		
-		//[self.button setTitle:[arguments objectAtIndex:0] forState:UIControlStateNormal];
-	}
-	
-	if (![[arguments objectAtIndex:1] isKindOfClass:[NullObject class]])
-	{
-		NSSelector* methodSelector = (NSSelector*)[arguments objectAtIndex:1];
-		[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
-	}
+	[self manageArguments:arguments container:parent];
 	
 	return self;
 }
 
--(CGRect) getRecommendedFrame: (CGRect)baseFrame
+-(void) manageArgument: (BindableObject*)bo at:(int)index
 {
-	return CGRectMake(baseFrame.origin.x, baseFrame.origin.y + baseFrame.size.height, 100, 50);
+	switch (index) {
+		case 0:
+			[self addBindingObject:bo forKey:@"title"];
+			[self.button setTitle:(NSString*)bo.value forState:UIControlStateNormal];
+			break;
+		case 1:
+		{
+			NSSelector* methodSelector = (NSSelector*)bo.value;
+			[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
+			break;
+		}
+		default:
+			break;
+	}
+	
+}
+
+-(CGRect) getRecommendedFrame: (id <iWidget>)lastControl container:(id<iWidget>)parent
+{
+	CGRect baseFrame = [lastControl getFrame];
+	return CGRectMake(baseFrame.origin.x + DEFAULT_MARGIN, baseFrame.origin.y + baseFrame.size.height + DEFAULT_MARGIN, 72, 37);
 }
 
 -(CGRect) getFrame

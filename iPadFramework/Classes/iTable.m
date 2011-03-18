@@ -9,22 +9,34 @@
 #import "iTable.h"
 #import "iTableViewController.h"
 #import "iView.h"
+#import "Constants.h"
+#import "iEmptyWidget.h"
 
 
 @implementation iTable
 @synthesize tableViewController, sectionList, title;
 
 
--(id<iWidget>) initialize: (NSMutableArray*)arguments
+-(id<iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
 {
-	[super initialize:arguments];
+	[super initialize:arguments container: parent];
 	sectionList = [[NSMutableArray alloc]init];
+	
+	[self manageArguments:arguments container:parent];
+	
 	return self;
 }
 
--(CGRect) getRecommendedFrame: (CGRect)baseFrame
+-(CGRect) getRecommendedFrame: (id <iWidget>)lastControl container:(id<iWidget>)parent
 {
-	return CGRectMake(0.0, baseFrame.origin.y + baseFrame.size.height, 768.0, 1004.0);
+	CGRect baseFrame = [lastControl getFrame];
+	
+	float margin = 0.0;
+	
+	if (![lastControl isKindOfClass:[iEmptyWidget class]])
+		margin = DEFAULT_MARGIN;
+
+	return CGRectMake(0.0, baseFrame.origin.y + baseFrame.size.height + margin, 768.0, 1004.0);
 }
 
 -(CGRect) getFrame

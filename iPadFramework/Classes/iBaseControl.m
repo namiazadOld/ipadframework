@@ -7,23 +7,39 @@
 //
 
 #import "iBaseControl.h"
+#import "Constants.h"
+#import "NullObject.h"
 
 
 @implementation iBaseControl
-@synthesize boundObjects, locked, parentWidget;
+@synthesize boundObjects, locked, parentWidget, eventSupported, lastInnerControl, maxSize;
 
 
--(id <iWidget>) initialize: (NSMutableArray*)arguments
+-(BOOL) eventSupported
+{
+	return YES;
+}
+
+-(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
 {
 	boundObjects = [[NSMutableDictionary alloc]init];
-	[[self getActualContol] addTarget:self action:@selector(eventOccured:) forControlEvents:UIControlEventAllEvents];
+	
+	if ([self eventSupported])
+		[[self getActualContol] addTarget:self action:@selector(eventOccured:) forControlEvents:UIControlEventAllEvents];
+	
+	iBaseControl* parentControl = (iBaseControl*)parent;
+	
+	if (parentControl == NULL)
+		self.maxSize = CGSizeMake(VERTICAL_WIDTH, VERTICAL_HEIGHT);
+	else
+		self.maxSize = CGSizeMake(parentControl.maxSize.width, parentControl.maxSize.height);
 
 	return self;
 }
 
--(CGRect) getRecommendedFrame: (CGRect)baseFrame;
+-(CGRect) getRecommendedFrame: (id <iWidget>)lastControl container:(id<iWidget>)parent
 {
-	return CGRectMake(0, 0, 0, 0);
+	return [lastControl getFrame];
 }
 
 -(CGRect) getFrame
@@ -121,6 +137,27 @@
 {
 	[boundObjects setValue:bo forKey:key];
 	[bo addObserver:self forKeyPath:@"value" options:NSKeyValueChangeNewKey context:NULL];
+}
+
+-(void) manageArguments: (NSMutableArray*)arguments container: (id<iWidget>)parent
+{
+	int i = 0;
+	for (BindableObject* bo in arguments)
+	{
+		if ([bo.value isKindOfClass:[NullObject class]])
+		{
+			i++;
+			continue;
+		}
+		
+		[self manageArgument:bo at:i];
+		i++;
+	}	
+}
+
+-(void) manageArgument: (BindableObject*)bo at:(int)index
+{
+	
 }
 
 -(void) childUpdated: (id<iWidget>)child

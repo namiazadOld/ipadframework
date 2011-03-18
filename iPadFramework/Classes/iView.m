@@ -7,16 +7,21 @@
 //
 
 #import "iView.h"
+#import "Constants.h"
+#import "Utilities.h"
 
 
 @implementation iView
 @synthesize viewController;
 
--(id <iWidget>) initialize: (NSMutableArray*)arguments
+-(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
 {
-	[super initialize:arguments];
+	[super initialize:arguments container: parent];
 	viewController = [[UIViewController alloc]init];
-	lastInnerControlFrame = CGRectMake(0, 0, 0, 0);
+	lastInnerControl = [[iEmptyWidget alloc]init];
+	
+	[self manageArguments:arguments container:parent];
+	
 	return self;
 }
 
@@ -32,17 +37,7 @@
 
 -(void) addBodyControl:(id <iWidget>) widget
 {
-	[widget setFrame:[widget getRecommendedFrame: lastInnerControlFrame]];
-	
-	UIView* view = [widget getView];
-	
-	if (view != NULL)
-		[self.viewController.view addSubview:view];
-	
-	lastInnerControlFrame = [widget getFrame];
-
-	[widget setParentWidget:self];
-	[widget parentChanged:self];
+	[Utilities AddControl:widget ToContainer:self];
 }
 
 @end

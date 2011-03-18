@@ -6,78 +6,119 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "iTextField.h"
+#import "iTextBox.h"
 #import "NullObject.h"
 #import "NSSelector.h"
+#import "Constants.h"
+#import "iLabel.h"
 
+@implementation iTextBox
 
-@implementation iTextField
-
-@synthesize textField, text;
+@synthesize textBox, text;
 
 //Properties Wrappers
 -(NSString*) text
 {
-	return textField.text;
+	return textBox.text;
 }
 
 -(void)setText:(NSString *)aString
 {
 	@synchronized(self)
 	{
-		if (textField.text != aString)
+		if (textBox.text != aString)
 		{
-			textField.text = [aString retain];
+			textBox.text = [aString retain];
 			[aString release];
 		}
 	}
 }
 
--(id <iWidget>) initialize: (NSMutableArray*) arguments
+-(NSString*) placeholder
 {
-	self.textField = [[UITextField alloc] init];
-	self.textField.borderStyle = UITextBorderStyleRoundedRect;
-	
-	[super initialize:arguments];
-	
-	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
+	return textBox.placeholder;
+}
+
+-(void)setPlaceholder:(NSString *)aString
+{
+	@synchronized(self)
 	{
-		BindableObject* bo = (BindableObject*) [arguments objectAtIndex:0];
-		[self addBindingObject:bo forKey:@"text"];
-		self.textField.text = (NSString*)bo.value;
+		if (textBox.placeholder != aString)
+		{
+			textBox.placeholder = [aString retain];
+			[aString release];
+		}
 	}
+}
+
+-(void) setupLabel: (NSString*) text
+{
+	UILabel* label = [[UILabel alloc] init];
+	label.adjustsFontSizeToFitWidth = YES;
+}
+
+-(id <iWidget>) initialize: (NSMutableArray*) arguments container: (id<iWidget>)parent
+{
+	self.textBox = [[UITextField alloc] init];
+	self.textBox.borderStyle = UITextBorderStyleRoundedRect;
+	
+	[super initialize:arguments container: parent];
+	[self manageArguments:arguments container:parent];
 	
 	return self;
 }
 
--(CGRect) getRecommendedFrame: (CGRect)baseFrame
+-(void) manageArgument: (BindableObject*)bo at:(int)index
 {
-	return CGRectMake(baseFrame.origin.x, baseFrame.origin.y + baseFrame.size.height, 100, 50);
+	switch (index) {
+		case 0:
+			[self addBindingObject:bo forKey:@"text"];
+			self.textBox.text = (NSString*)bo.value;
+			break;
+		case 1:
+			[self addBindingObject:bo forKey:@"placeholder"];
+			self.textBox.placeholder = (NSString*)bo.value;
+			break;
+		default:
+			break;
+	}
+}
+
+-(CGRect) getRecommendedFrame: (id <iWidget>) lastControl container:(id<iWidget>)parent
+{
+	CGRect baseFrame = [lastControl getFrame];
+	
+	float width = self.maxSize.width - (baseFrame.origin.x + 2*DEFAULT_MARGIN); 
+	if ([lastControl isKindOfClass:[iLabel class]])
+	{
+		return CGRectMake(baseFrame.origin.x + baseFrame.size.width + DEFAULT_MARGIN, baseFrame.origin.y, width - baseFrame.size.width, 31);
+	}
+	return CGRectMake(baseFrame.origin.x + DEFAULT_MARGIN, baseFrame.origin.y + DEFAULT_MARGIN, width, 31);
 }
 
 -(CGRect) getFrame
 {
-	return self.textField.frame;
+	return self.textBox.frame;
 }
 
 -(void)setFrame:(CGRect)frame
 {
-	self.textField.frame = frame;
+	self.textBox.frame = frame;
 }
 
 -(UIView*) getView
 {
-	return self.textField;
+	return self.textBox;
 }
 
 -(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 {
-	[self.textField addTarget:target action:action forControlEvents:controlEvents];
+	[self.textBox addTarget:target action:action forControlEvents:controlEvents];
 }
 
 -(id) getActualContol
 {
-	return self.textField;
+	return self.textBox;
 }
 
 @end

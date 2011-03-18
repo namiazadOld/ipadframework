@@ -16,29 +16,27 @@
 
 @synthesize text;
 
--(id <iWidget>) initialize: (NSMutableArray*)arguments
+-(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
 {
-	[super initialize:arguments];
-	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
-	{
-		BindableObject* bo = (BindableObject*)[arguments objectAtIndex:0];
-		[self addBindingObject:bo forKey:@"text"];
-		
-		//self.text = [arguments objectAtIndex:0];
-	}
-	else 
-		self.text = @"";
+	[super initialize:arguments container: parent];
+	
+	
+	[self manageArguments:arguments container:parent];	
 
 	return self;
 }
 
--(CGRect) getRecommendedFrame: (CGRect)baseFrame
+-(void) manageArgument: (BindableObject*)bo at:(int)index
 {
-	return CGRectMake(baseFrame.origin.x, 
-					  baseFrame.origin.y + baseFrame.size.height, 
-					  baseFrame.size.width, 
-					  baseFrame.size.height);
+	switch (index) {
+		case 0:
+			[self addBindingObject:bo forKey:@"text"];
+			break;
+		default:
+			break;
+	}
 }
+
 
 //This method is called by addBodyControl method of parent to provide good level of extensibility
 -(void) parentChanged: (id<iWidget>)parent
@@ -56,7 +54,7 @@
 		iTable* table = (iTable*)parent;
 		if ([table.sectionList count] == 0)
 		{
-			section = [[iSection alloc] initialize:[[NSMutableArray alloc] init]];
+			section = [[iSection alloc] initialize:[[NSMutableArray alloc] init] container: table];
 			[table.sectionList addObject:section];
 		}
 		

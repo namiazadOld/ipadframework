@@ -10,10 +10,11 @@
 #import "iBaseControl.h"
 
 @interface iTextBox : iBaseControl {
-	UITextField* textField;
+	UITextField* textBox;
 }
 
-@property (nonatomic, retain) UITextField* textField;
+@property (nonatomic, retain) UITextField* textBox;
 @property (nonatomic, retain) NSString* text;
+@property (nonatomic, retain) NSString* placeholder;
 
 @end

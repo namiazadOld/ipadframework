@@ -17,28 +17,26 @@
 
 @synthesize title, itemList;
 
--(id <iWidget>) initialize: (NSMutableArray*)arguments
+-(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
 {
-	[super initialize:arguments];
+	[super initialize:arguments container: parent];
 	itemList = [[NSMutableArray alloc] init];
 	
-	if ([arguments count] > 0 && ![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
-	{
-		BindableObject* bo = (BindableObject*)[arguments objectAtIndex:0];
-		[self addBindingObject:bo forKey:@"title"];
-		
-		//self.title = [arguments objectAtIndex:0];
-	}
+	[self manageArguments:arguments container:parent];
+	
 	
 	return self;
 }
 
--(CGRect) getRecommendedFrame: (CGRect)baseFrame
+-(void) manageArgument: (BindableObject*)bo at:(int)index
 {
-	return CGRectMake(baseFrame.origin.x, 
-					  baseFrame.origin.y + baseFrame.size.height, 
-					  baseFrame.size.width, 
-					  baseFrame.size.height);
+	switch (index) {
+		case 0:
+			[self addBindingObject:bo forKey:@"title"];
+			break;
+		default:
+			break;
+	}	
 }
 
 
