@@ -34,39 +34,39 @@
 }
 
 
--(id <iWidget>) initialize: (NSMutableArray*) arguments
+-(id <iWidget>) initialize: (NSMutableArray*) arguments container: (id<iWidget>)parent
 {
-	[super initialize:arguments];
+	[super initialize:arguments container: parent];
 	self.button = [[UIBarButtonItem alloc] init];
 	[self.button setStyle:UIBarButtonSystemItemFastForward];
 	
-	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
-	{
-		BindableObject* bo = (BindableObject*) [arguments objectAtIndex:0];
-		[self addBindingObject:bo forKey:@"title"];
-		[self.button setTitle:(NSString*)bo.value];
+	[self manageArguments:arguments container:parent];
 		
-		//self.button.title = [arguments objectAtIndex:0];
-	}
-		
-	
-	if (![[arguments objectAtIndex:1] isKindOfClass:[NullObject class]])
-	{
-		NSSelector* methodSelector = (NSSelector*)[arguments objectAtIndex:1];
-		[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
-	}
-	
 	return self;
 }
 
--(CGRect) getRecommendedFrame: (CGRect)baseFrame
+-(void) manageArgument: (BindableObject*)bo at:(int)index
 {
-	return CGRectMake(baseFrame.origin.x, baseFrame.origin.y + baseFrame.size.height, 100, 50);
+	switch (index) {
+		case 0:
+			[self addBindingObject:bo forKey:@"title"];
+			[self.button setTitle:(NSString*)bo.value];
+			break;
+		case 1:
+		{
+			NSSelector* methodSelector = (NSSelector*)bo.value;
+			[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
+			break;
+		}
+		default:
+			break;
+	}
 }
+
 
 -(CGRect) getFrame
 {
-	return CGRectMake(0.0, 0.0, self.button.width, 50.0);
+	return CGRectMake(0.0, 0.0, self.button.width, 0.0);
 }
 
 -(void)setFrame:(CGRect)frame

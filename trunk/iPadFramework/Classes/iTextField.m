@@ -1,88 +1,65 @@
 //
-//  iButton.m
+//  iTextField.m
 //  iPadFramework
 //
-//  Created by Nami on 1/4/11.
+//  Created by Nami on 3/10/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
 #import "iTextField.h"
-#import "NullObject.h"
-#import "NSSelector.h"
+#import "BindableObject.h"
 
 
 @implementation iTextField
+@synthesize label, textBox;
 
-@synthesize textField, text;
-
-//Properties Wrappers
--(NSString*) text
+-(BOOL) eventSupported
 {
-	return textField.text;
+	return YES;
 }
 
--(void)setText:(NSString *)aString
+-(id <iWidget>) initialize: (NSMutableArray*) arguments container: (id<iWidget>)parent
 {
-	@synchronized(self)
-	{
-		if (textField.text != aString)
-		{
-			textField.text = [aString retain];
-			[aString release];
-		}
-	}
-}
+	[super initialize:arguments container: parent];
+	[self manageArguments:arguments container:parent];
+	
+	BindableObject* textBO = [arguments objectAtIndex:0];
+	BindableObject* placeholderBO = [arguments objectAtIndex:1];
+	BindableObject* labelBO = [arguments objectAtIndex:2];
+	BindableObject* seperateLabelBO = [arguments objectAtIndex:3];
+	
 
--(id <iWidget>) initialize: (NSMutableArray*) arguments
-{
-	self.textField = [[UITextField alloc] init];
+	NSMutableArray* labelArgs = [[NSMutableArray alloc]init];	
+	[labelArgs addObject:labelBO];
+	self.label = [[iLabel alloc]initialize:labelArgs container: self];
+	[self.label finilize];
+	[labelArgs release];
+		
+	NSMutableArray* textBoxArgs = [[NSMutableArray alloc]init];
+	[textBoxArgs addObject:textBO];
+	[textBoxArgs addObject:placeholderBO];
 	
-	[super initialize:arguments];
 	
-	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
-	{
-		BindableObject* bo = (BindableObject*) [arguments objectAtIndex:0];
-		[self addBindingObject:bo forKey:@"text"];
-		self.textField.text = (NSString*)bo.value;
+	self.textBox = [[iTextBox alloc]initialize:textBoxArgs container: self];
+	[self.textBox finilize];
+	[textBoxArgs release];
+	
+	if ([seperateLabelBO.value compare:[NSNumber numberWithBool:YES]] == NSOrderedSame)
+		[self addBodyControl:self.label];	
+	else {
+		UILabel* actualLabel = [self.label getView];
+		actualLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:[UIFont labelFontSize]];
+		UITextField* actualTextBox = [self.textBox getView];
+		actualTextBox.leftViewMode = UITextFieldViewModeAlways;
+		actualTextBox.leftView = actualLabel;
+		actualTextBox.leftView.frame = CGRectMake(0, 0, 90, 21);
+		[actualTextBox.leftView layoutSubviews];
 	}
-	
-	//if (![[arguments objectAtIndex:1] isKindOfClass:[NullObject class]])
-//	{
-//		NSSelector* methodSelector = (NSSelector*)[arguments objectAtIndex:1];
-//		[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
-//	}
+
+	[self addBodyControl:self.textBox];
 	
 	return self;
 }
 
--(CGRect) getRecommendedFrame: (CGRect)baseFrame
-{
-	return CGRectMake(baseFrame.origin.x, baseFrame.origin.y + baseFrame.size.height, 100, 50);
-}
-
--(CGRect) getFrame
-{
-	return self.textField.frame;
-}
-
--(void)setFrame:(CGRect)frame
-{
-	self.textField.frame = frame;
-}
-
--(UIView*) getView
-{
-	return self.textField;
-}
-
--(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
-{
-	[self.textField addTarget:target action:action forControlEvents:controlEvents];
-}
-
--(id) getActualContol
-{
-	return self.textField;
-}
 
 @end

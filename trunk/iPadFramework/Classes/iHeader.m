@@ -14,24 +14,30 @@
 @implementation iHeader
 @synthesize title, rightButton, leftButton;
 
--(id <iWidget>) initialize: (NSMutableArray*)arguments
+-(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
 {
-	[super initialize:arguments];
-	if (![[arguments objectAtIndex:0] isKindOfClass:[NullObject class]])
-	{
-		BindableObject* bo = (BindableObject*)[arguments objectAtIndex:0];
-		[self addBindingObject:bo forKey:@"title"];
-		
-		//self.title = [arguments objectAtIndex:0];
-	}
-	else 
-		self.title = @"";
+	[super initialize:arguments container: parent];
+	
+	[self manageArguments:arguments container:parent];
 	
 	return self;
 }
 
--(CGRect) getRecommendedFrame: (CGRect)baseFrame
+-(void) manageArgument: (BindableObject*)bo at:(int)index
 {
+	switch (index) {
+		case 0:
+			[self addBindingObject:bo forKey:@"title"];
+			break;
+		default:
+			break;
+	}
+}
+
+
+-(CGRect) getRecommendedFrame: (id <iWidget>) lastControl container:(id<iWidget>)parent
+{
+	CGRect baseFrame = [lastControl getFrame];
 	return CGRectMake(baseFrame.origin.x, 
 					  baseFrame.origin.y + baseFrame.size.height, 
 					  baseFrame.size.width, 
