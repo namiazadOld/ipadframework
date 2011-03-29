@@ -12,6 +12,7 @@
 
 @implementation Utilities
 
+static UIViewController* currentView;
 
 +(void) ShowError: (id)sender title: (NSString*)title content: (NSString*)content
 {
@@ -41,5 +42,16 @@
 	[widget parentChanged:container];
 }
 
++(UIViewController*) CurrentView
+{
+	return currentView;
+}
+
++(void) setCurrentView: (UIViewController*)viewController
+{
+	[currentView release];
+	currentView = [viewController retain];
+	[viewController release];
+}
 
 @end

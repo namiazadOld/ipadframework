@@ -12,7 +12,7 @@
 
 
 @interface Utilities : NSObject {
-	
+
 }
 
 +(void) ShowError: (id)sender title: (NSString*)title content: (NSString*)content;
