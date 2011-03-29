@@ -32,6 +32,8 @@
 
 -(id)top
 {
+	if ([storage count] == 0)
+		return NULL;
 	return [storage objectAtIndex:[storage count] - 1];
 }
 

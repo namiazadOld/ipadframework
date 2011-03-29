@@ -10,11 +10,11 @@
 
 
 @interface BindableObject : NSObject {
-	id value;
+	NSObject* value;
 }
 
-@property (retain, readwrite) id value;
+@property (retain, readwrite) NSObject* value;
 
--(BindableObject*) initWithValue: (id)_value;
+-(BindableObject *) initWithValue: (id)_value;
 
 @end
