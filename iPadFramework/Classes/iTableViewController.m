@@ -34,14 +34,15 @@
     static NSString *CellIdentifier = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    if (cell == nil) {
-        cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier] autorelease];
-    }
-    
+  
 	iItem* item = [[[self.sectionList objectAtIndex:indexPath.section] itemList] objectAtIndex:indexPath.row];
+	
+	// Configure the cell...
+	if (cell == nil)
+		cell = item.cell;
+	
 	cell.textLabel.text = item.text;
-    // Configure the cell...
-    
+	
     return cell;
 }
 
