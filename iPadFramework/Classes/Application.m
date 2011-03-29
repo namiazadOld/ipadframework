@@ -14,6 +14,12 @@
 #import "iSection.h"
 #import "iLeftButton.h"
 
+
+NSString* helloWorld()
+{
+	return NULL;
+}
+
 @implementation Application
 @synthesize window;
 
@@ -46,6 +52,7 @@ id tmp1305;
 
 -(void) root
 {
+	NSString* t = helloWorld();
 	iView *aView = [Context getView:@"root"];
 	if (aView != NULL)
 	{
