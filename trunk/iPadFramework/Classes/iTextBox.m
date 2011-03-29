@@ -14,7 +14,7 @@
 
 @implementation iTextBox
 
-@synthesize textBox, text;
+@synthesize textBox, text, withBorder;
 
 //Properties Wrappers
 -(NSString*) text
@@ -51,6 +51,23 @@
 	}
 }
 
+-(NSNumber*) withBorder
+{
+	return [[NSNumber numberWithBool:self.textBox.borderStyle == UITextBorderStyleRoundedRect] autorelease];
+}
+
+-(void)setWithBorder: (NSNumber*) aBool
+{
+	@synchronized(self)
+	{
+		if ([aBool compare:[NSNumber numberWithBool:YES]] == NSOrderedSame)
+			self.textBox.borderStyle = UITextBorderStyleRoundedRect;
+		else
+			self.textBox.borderStyle = UITextBorderStyleNone;
+	}
+}
+
+
 -(void) setupLabel: (NSString*) text
 {
 	UILabel* label = [[UILabel alloc] init];
@@ -60,7 +77,6 @@
 -(id <iWidget>) initialize: (NSMutableArray*) arguments container: (id<iWidget>)parent
 {
 	self.textBox = [[UITextField alloc] init];
-	self.textBox.borderStyle = UITextBorderStyleRoundedRect;
 	
 	[super initialize:arguments container: parent];
 	[self manageArguments:arguments container:parent];
@@ -79,6 +95,10 @@
 			[self addBindingObject:bo forKey:@"placeholder"];
 			self.textBox.placeholder = (NSString*)bo.value;
 			break;
+		case 2:
+			[self addBindingObject:bo forKey:@"withBorder"];
+			self.withBorder = (NSNumber*)bo.value;
+			break;
 		default:
 			break;
 	}
@@ -90,9 +110,7 @@
 	
 	float width = self.maxSize.width - (baseFrame.origin.x + 2*DEFAULT_MARGIN); 
 	if ([lastControl isKindOfClass:[iLabel class]])
-	{
 		return CGRectMake(baseFrame.origin.x + baseFrame.size.width + DEFAULT_MARGIN, baseFrame.origin.y, width - baseFrame.size.width, 31);
-	}
 	return CGRectMake(baseFrame.origin.x + DEFAULT_MARGIN, baseFrame.origin.y + DEFAULT_MARGIN, width, 31);
 }
 
@@ -114,11 +132,6 @@
 -(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents
 {
 	[self.textBox addTarget:target action:action forControlEvents:controlEvents];
-}
-
--(id) getActualContol
-{
-	return self.textBox;
 }
 
 @end

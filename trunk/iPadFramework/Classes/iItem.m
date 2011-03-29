@@ -14,12 +14,13 @@
 
 @implementation iItem
 
-@synthesize text;
+@synthesize text, cell;
 
 -(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
 {
 	[super initialize:arguments container: parent];
 	
+	self.cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"] autorelease];
 	
 	[self manageArguments:arguments container:parent];	
 
@@ -64,5 +65,24 @@
 	}
 }
 
+-(void) addBodyControl:(id <iWidget>) widget
+{
+
+	[widget setFrame:[widget getRecommendedFrame:self.lastInnerControl container: self]];
+	UIView* view = [widget getView];
+	
+	if (view != NULL)
+		[self.cell.contentView addSubview:view];
+	
+	self.lastInnerControl = widget;
+	
+	[widget setParentWidget:self];
+	[widget parentChanged:self];
+}
+
+-(UIView*) getView
+{
+	return cell;
+}
 
 @end

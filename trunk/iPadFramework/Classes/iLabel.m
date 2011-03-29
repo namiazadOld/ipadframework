@@ -92,9 +92,4 @@
 	return self.label;
 }
 
--(id) getActualContol
-{
-	return self.label;
-}
-
 @end

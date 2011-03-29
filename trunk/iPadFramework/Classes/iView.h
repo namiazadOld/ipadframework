@@ -13,9 +13,7 @@
 
 @interface iView : iBaseControl {
 
-	UIViewController* viewController;
+	
 }
-
-@property (nonatomic, retain) UIViewController* viewController;
 
 @end

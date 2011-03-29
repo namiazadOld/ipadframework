@@ -89,9 +89,4 @@
 	[self.button addTarget:target action:action forControlEvents:controlEvents];
 }
 
--(id) getActualContol
-{
-	return self.button;
-}
-
 @end

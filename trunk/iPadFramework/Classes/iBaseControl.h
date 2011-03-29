@@ -18,6 +18,8 @@
 	BOOL locked;
 	iBaseControl* parentWidget;
 	CGSize maxSize;
+	
+	UIViewController* viewController;
 }
 
 //@property (assign) CGRect lastInnerControlFrame;
@@ -27,6 +29,7 @@
 @property (readwrite, retain) iBaseControl* parentWidget;
 @property (readonly, assign) BOOL eventSupported;
 @property (readwrite, assign) CGSize maxSize;
+@property (nonatomic, retain) UIViewController* viewController;
 
 
 -(void) addBindingObject:(BindableObject*)bo forKey:(NSString*)key;

@@ -27,6 +27,7 @@
 	BindableObject* placeholderBO = [arguments objectAtIndex:1];
 	BindableObject* labelBO = [arguments objectAtIndex:2];
 	BindableObject* seperateLabelBO = [arguments objectAtIndex:3];
+	BindableObject* withBorderBO = [arguments objectAtIndex:4];
 	
 
 	NSMutableArray* labelArgs = [[NSMutableArray alloc]init];	
@@ -38,7 +39,7 @@
 	NSMutableArray* textBoxArgs = [[NSMutableArray alloc]init];
 	[textBoxArgs addObject:textBO];
 	[textBoxArgs addObject:placeholderBO];
-	
+	[textBoxArgs addObject:withBorderBO];
 	
 	self.textBox = [[iTextBox alloc]initialize:textBoxArgs container: self];
 	[self.textBox finilize];

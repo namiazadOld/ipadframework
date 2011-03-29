@@ -12,8 +12,7 @@
 
 
 @implementation iBaseControl
-@synthesize boundObjects, locked, parentWidget, eventSupported, lastInnerControl, maxSize;
-
+@synthesize boundObjects, locked, parentWidget, eventSupported, lastInnerControl, maxSize, viewController;
 
 -(BOOL) eventSupported
 {
@@ -25,7 +24,7 @@
 	boundObjects = [[NSMutableDictionary alloc]init];
 	
 	if ([self eventSupported])
-		[[self getActualContol] addTarget:self action:@selector(eventOccured:) forControlEvents:UIControlEventAllEvents];
+		[[self getView] addTarget:self action:@selector(eventOccured:) forControlEvents:UIControlEventAllEvents];
 	
 	iBaseControl* parentControl = (iBaseControl*)parent;
 	
@@ -128,11 +127,6 @@
 	}
 }
 
--(id)getActualContol
-{
-	return NULL;
-}
-
 -(void) addBindingObject:(BindableObject*)bo forKey:(NSString*)key
 {
 	[boundObjects setValue:bo forKey:key];
@@ -141,6 +135,7 @@
 
 -(void) manageArguments: (NSMutableArray*)arguments container: (id<iWidget>)parent
 {
+	
 	int i = 0;
 	for (BindableObject* bo in arguments)
 	{

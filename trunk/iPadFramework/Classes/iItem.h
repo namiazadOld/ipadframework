@@ -13,8 +13,10 @@
 
 @interface iItem : iBaseControl{
 	NSString* text;
+	UITableViewCell* cell;
 }
 
 @property (retain) NSString* text;
+@property (nonatomic, retain) UITableViewCell* cell;
 
 @end

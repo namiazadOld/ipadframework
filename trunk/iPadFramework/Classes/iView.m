@@ -12,14 +12,12 @@
 
 
 @implementation iView
-@synthesize viewController;
 
 -(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
 {
 	[super initialize:arguments container: parent];
 	viewController = [[UIViewController alloc]init];
 	lastInnerControl = [[iEmptyWidget alloc]init];
-	
 	[self manageArguments:arguments container:parent];
 	
 	return self;

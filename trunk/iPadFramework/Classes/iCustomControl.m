@@ -60,11 +60,6 @@
 	return self.scrollView;
 }
 
--(id) getActualContol
-{
-	return self.scrollView;
-}
-
 -(void) addBodyControl:(id <iWidget>) widget
 {	
 	[Utilities AddControl:widget ToContainer:self];
