@@ -14,7 +14,7 @@
 
 @implementation iItem
 
-@synthesize text, cell;
+@synthesize title, cell;
 
 -(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
 {
@@ -31,7 +31,7 @@
 {
 	switch (index) {
 		case 0:
-			[self addBindingObject:bo forKey:@"text"];
+			[self addBindingObject:bo forKey:@"title"];
 			break;
 		default:
 			break;

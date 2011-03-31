@@ -12,11 +12,11 @@
 
 
 @interface iItem : iBaseControl{
-	NSString* text;
+	NSString* title;
 	UITableViewCell* cell;
 }
 
-@property (retain) NSString* text;
+@property (retain) NSString* title;
 @property (nonatomic, retain) UITableViewCell* cell;
 
 @end

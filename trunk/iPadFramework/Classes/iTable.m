@@ -11,6 +11,7 @@
 #import "iView.h"
 #import "Constants.h"
 #import "iEmptyWidget.h"
+#import "iHeader.h"
 
 
 @implementation iTable
@@ -33,7 +34,7 @@
 	
 	float margin = 0.0;
 	
-	if (![lastControl isKindOfClass:[iEmptyWidget class]])
+	if (!([lastControl isKindOfClass:[iEmptyWidget class]] || [lastControl isKindOfClass:[iHeader class]]))
 		margin = DEFAULT_MARGIN;
 
 	return CGRectMake(0.0, baseFrame.origin.y + baseFrame.size.height + margin, 768.0, 1004.0);
