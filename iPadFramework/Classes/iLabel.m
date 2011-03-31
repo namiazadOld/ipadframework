@@ -40,6 +40,7 @@
 {
 	self.label = [[UILabel alloc] init];
 	self.label.adjustsFontSizeToFitWidth = YES;
+	[self.label setBackgroundColor:[UIColor clearColor]];
 	
 	[super initialize:arguments container: parent];
 	[self manageArguments:arguments container:parent];

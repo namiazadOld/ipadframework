@@ -35,5 +35,6 @@
 -(void) addBindingObject:(BindableObject*)bo forKey:(NSString*)key;
 -(void) manageArguments: (NSMutableArray*)arguments container: (id<iWidget>)parent;
 -(void) manageArgument: (BindableObject*)bo at:(int)index;
+-(void)style: (id<iWidget>)parent;
 
 @end

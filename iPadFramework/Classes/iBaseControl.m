@@ -160,5 +160,8 @@
 	
 }
 
+-(void)style: (id<iWidget>)parent
+{
+}
 
 @end
