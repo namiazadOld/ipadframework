@@ -10,27 +10,25 @@
 #import "NullObject.h"
 #import "iSection.h"
 #import "iTable.h"
+#import "Utilities.h"
 
 
 @implementation iItem
 
 @synthesize title, cell;
 
--(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
+-(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
-	[super initialize:arguments container: parent];
-	
 	self.cell = [[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"] autorelease];
-	
-	[self manageArguments:arguments container:parent];	
-
+	[super initialize:arguments container: parent];
 	return self;
 }
 
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
+	[super manageArgument:bo at:index];
 	switch (index) {
-		case 0:
+		case 6:
 			[self addBindingObject:bo forKey:@"title"];
 			break;
 		default:
@@ -40,7 +38,7 @@
 
 
 //This method is called by addBodyControl method of parent to provide good level of extensibility
--(void) parentChanged: (id<iWidget>)parent
+-(void) parentChanged: (iBaseControl*)parent
 {
 	if ([parent isKindOfClass:[iSection class]])
 	{
@@ -65,24 +63,24 @@
 	}
 }
 
--(void) addBodyControl:(id <iWidget>) widget
+-(void) addBodyControl:(iBaseControl*) widget
 {
+	[Utilities AddControl:widget ToContainer:self];
+}
 
-	[widget setFrame:[widget getRecommendedFrame:self.lastInnerControl container: self]];
-	UIView* view = [widget getView];
-	
-	if (view != NULL)
-		[self.cell.contentView addSubview:view];
-	
-	self.lastInnerControl = widget;
-	
-	[widget setParentWidget:self];
-	[widget parentChanged:self];
+-(CGRect) getFrame
+{
+	return self.cell.contentView.frame;
 }
 
 -(UIView*) getView
 {
-	return cell;
+	return self.cell;
+}
+
+-(UIView*) getChildrenHolder
+{
+	return self.cell.contentView;
 }
 
 @end

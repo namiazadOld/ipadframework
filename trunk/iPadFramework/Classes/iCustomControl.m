@@ -15,35 +15,34 @@
 @synthesize scrollView;
 
 
--(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
+-(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
-	[super initialize:arguments container: parent];
 	scrollView = [[UIScrollView alloc]init];
+	[super initialize:arguments container: parent];
 	lastInnerControl = [[iEmptyWidget alloc]init];
-	[self manageArguments:arguments container:parent];
 	return self;
 }
 
 
--(CGRect) getRecommendedFrame: (id <iWidget>)lastControl container:(id<iWidget>)parent
-{
-	CGRect baseFrame = [lastControl getFrame];
-	float lowestY = 0.0;
-	
-	for (UIView* view in self.scrollView.subviews)
-	{
-		float y = view.frame.origin.y;
-		if (view != NULL)
-			if (y + view.frame.size.height >= lowestY)
-				lowestY = view.frame.origin.y + view.frame.size.height;
-	}
-	
-	return CGRectMake(0,  
-					  baseFrame.origin.y + baseFrame.size.height + DEFAULT_MARGIN, 
-					  //Should be customized according to orientation of device.
-					  VERTICAL_WIDTH,
-					  lowestY);
-}
+//-(CGRect) getRecommendedFrame: (iBaseControl*)lastControl container:(iBaseControl*)parent
+//{
+//	CGRect baseFrame = [lastControl getFrame];
+//	float lowestY = 0.0;
+//	
+//	for (UIView* view in self.scrollView.subviews)
+//	{
+//		float y = view.frame.origin.y;
+//		if (view != NULL)
+//			if (y + view.frame.size.height >= lowestY)
+//				lowestY = view.frame.origin.y + view.frame.size.height;
+//	}
+//	
+//	return CGRectMake(0,  
+//					  baseFrame.origin.y + baseFrame.size.height + DEFAULT_MARGIN, 
+//					  //Should be customized according to orientation of device.
+//					  VERTICAL_WIDTH,
+//					  lowestY);
+//}
 
 -(CGRect) getFrame
 {
@@ -60,9 +59,14 @@
 	return self.scrollView;
 }
 
--(void) addBodyControl:(id <iWidget>) widget
+-(void) addBodyControl:(iBaseControl*) widget
 {	
 	[Utilities AddControl:widget ToContainer:self];
+}
+
+-(void) manageArgument:(BindableObject *)bo at:(int)index
+{
+	//hide super method
 }
 
 @end

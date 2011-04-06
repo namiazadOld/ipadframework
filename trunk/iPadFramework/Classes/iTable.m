@@ -17,28 +17,24 @@
 @implementation iTable
 @synthesize tableViewController, sectionList, title;
 
-
--(id<iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
+-(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
 	[super initialize:arguments container: parent];
 	sectionList = [[NSMutableArray alloc]init];
-	
-	[self manageArguments:arguments container:parent];
-	
 	return self;
 }
 
--(CGRect) getRecommendedFrame: (id <iWidget>)lastControl container:(id<iWidget>)parent
-{
-	CGRect baseFrame = [lastControl getFrame];
-	
-	float margin = 0.0;
-	
-	if (!([lastControl isKindOfClass:[iEmptyWidget class]] || [lastControl isKindOfClass:[iHeader class]]))
-		margin = DEFAULT_MARGIN;
-
-	return CGRectMake(0.0, baseFrame.origin.y + baseFrame.size.height + margin, 768.0, 1004.0);
-}
+//-(CGRect) getRecommendedFrame: (iBaseControl*)lastControl container:(iBaseControl*)parent
+//{
+//	CGRect baseFrame = [lastControl getFrame];
+//	
+//	float margin = 0.0;
+//	
+//	if (!([lastControl isKindOfClass:[iEmptyWidget class]] || [lastControl isKindOfClass:[iHeader class]]))
+//		margin = DEFAULT_MARGIN;
+//
+//	return CGRectMake(0.0, baseFrame.origin.y + baseFrame.size.height + margin, 768.0, 1004.0);
+//}
 
 -(CGRect) getFrame
 {
@@ -71,7 +67,7 @@
 	self.tableViewController.title = self.title;
 }
 
--(void) childUpdated: (id<iWidget>)child
+-(void) childUpdated: (iBaseControl*)child
 {
 	[self.tableViewController.tableView reloadData];
 	//[self.tableViewController.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];

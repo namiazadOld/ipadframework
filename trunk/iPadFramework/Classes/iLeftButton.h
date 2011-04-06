@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "iWidget.h"
 #import "iNavigationButton.h"
 
 
 
-@interface iLeftButton : iNavigationButton<iWidget> {
+@interface iLeftButton : iNavigationButton{
 
 }
 

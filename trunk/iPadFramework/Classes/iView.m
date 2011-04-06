@@ -13,13 +13,12 @@
 
 @implementation iView
 
--(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
+
+-(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
-	[super initialize:arguments container: parent];
 	viewController = [[UIViewController alloc]init];
+	[super initialize:arguments container: parent];
 	lastInnerControl = [[iEmptyWidget alloc]init];
-	[self manageArguments:arguments container:parent];
-	
 	return self;
 }
 
@@ -33,9 +32,14 @@
 	return self.viewController.view;
 }
 
--(void) addBodyControl:(id <iWidget>) widget
+-(void) addBodyControl:(iBaseControl*) widget
 {
 	[Utilities AddControl:widget ToContainer:self];
+}
+
+-(void) manageArgument:(BindableObject *)bo at:(int)index
+{
+	//hide super method
 }
 
 @end

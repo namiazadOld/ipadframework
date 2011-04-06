@@ -9,22 +9,22 @@
 #import "iBaseControl.h"
 #import "Constants.h"
 #import "NullObject.h"
-
+#import "StylingManager.h"
 
 @implementation iBaseControl
-@synthesize boundObjects, locked, parentWidget, eventSupported, lastInnerControl, maxSize, viewController;
+@synthesize boundObjects, locked, parentWidget, 
+			lastInnerControl, maxSize, viewController, anchor, place,
+			initialFrame, children;
 
--(BOOL) eventSupported
-{
-	return YES;
-}
-
--(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
+-(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
 	boundObjects = [[NSMutableDictionary alloc]init];
+	children = [[NSMutableArray alloc] init];
+	initialFrame = CGRectMake(-1, -1, -1, -1);
 	
-	if ([self eventSupported])
-		[[self getView] addTarget:self action:@selector(eventOccured:) forControlEvents:UIControlEventAllEvents];
+	if ([[self getChildrenHolder] respondsToSelector:@selector(addTarget:action:forControlEvents:)] && [self getChildrenHolder] != NULL)
+		[[self getChildrenHolder] addTarget:self action:@selector(eventOccured:) forControlEvents:UIControlEventAllEvents];
+	
 	
 	iBaseControl* parentControl = (iBaseControl*)parent;
 	
@@ -33,12 +33,14 @@
 	else
 		self.maxSize = CGSizeMake(parentControl.maxSize.width, parentControl.maxSize.height);
 
+	[self manageArguments:arguments container:parent];
+	
 	return self;
 }
 
--(CGRect) getRecommendedFrame: (id <iWidget>)lastControl container:(id<iWidget>)parent
+-(CGRect) getRecommendedFrame:(iBaseControl*)parent
 {
-	return [lastControl getFrame];
+	return [StylingManager styledRectangle:self container:parent];
 }
 
 -(CGRect) getFrame
@@ -56,12 +58,17 @@
 	return NULL;
 }
 
+-(UIView*) getChildrenHolder
+{
+	return [self getView];
+}
+
 -(void)orientationChanged:(UIInterfaceOrientation)toInterfaceOrientation
 {
 	
 }
 
--(void) addBodyControl:(id<iWidget>) widget
+-(void) addBodyControl:(iBaseControl*) widget
 {
 	[widget setParentWidget:self];
 	[widget parentChanged:self];
@@ -77,7 +84,7 @@
 	
 }
 
--(void) parentChanged: (id<iWidget>)parent
+-(void) parentChanged: (iBaseControl*)parent
 {
 	
 }
@@ -130,10 +137,10 @@
 -(void) addBindingObject:(BindableObject*)bo forKey:(NSString*)key
 {
 	[boundObjects setValue:bo forKey:key];
-	[bo addObserver:self forKeyPath:@"value" options:NSKeyValueChangeNewKey context:NULL];
+	[bo addObserver:self forKeyPath:@"value" options:NSKeyValueChangeNewKey context:nil];
 }
 
--(void) manageArguments: (NSMutableArray*)arguments container: (id<iWidget>)parent
+-(void) manageArguments: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
 	
 	int i = 0;
@@ -152,16 +159,52 @@
 
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
+	switch (index) {
+		case 0:
+		{
+			initialFrame = CGRectMake([((NSNumber*) bo.value) floatValue], initialFrame.origin.y, initialFrame.size.width, initialFrame.size.height);
+			break;
+		}
+		case 1:
+		{
+			initialFrame = CGRectMake(initialFrame.origin.x, [((NSNumber*) bo.value) floatValue], initialFrame.size.width, initialFrame.size.height);
+			break;
+		}
+		case 2:
+		{
+			initialFrame = CGRectMake(initialFrame.origin.x, initialFrame.origin.y, [((NSNumber*) bo.value) floatValue], initialFrame.size.height);
+			break;
+		}
+		case 3:
+		{
+			initialFrame = CGRectMake(initialFrame.origin.x, initialFrame.origin.y, initialFrame.size.width, [((NSNumber*) bo.value) floatValue]);
+			break;
+		}
+		case 4:
+		{
+			place = (Place) [((NSNumber*) bo.value) intValue];
+			break;
+		}
+		case 5:
+		{
+			anchor = (Anchor) [((NSNumber*) bo.value) intValue];
+			break;
+		}
+		default:
+			break;
+	}
 	
 }
 
--(void) childUpdated: (id<iWidget>)child
+-(void) childUpdated: (iBaseControl*)child
 {
 	
 }
 
--(void)style: (id<iWidget>)parent
+-(void)style: (iBaseControl*)parent
 {
 }
+
+
 
 @end

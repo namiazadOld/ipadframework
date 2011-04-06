@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "iWidget.h"
 #import "iTableViewController.h"
 #import "iBaseControl.h"
 

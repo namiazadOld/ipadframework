@@ -34,25 +34,23 @@
 }
 
 
--(id <iWidget>) initialize: (NSMutableArray*) arguments container: (id<iWidget>)parent
+-(iBaseControl*) initialize: (NSMutableArray*) arguments container: (iBaseControl*)parent
 {
-	[super initialize:arguments container: parent];
 	self.button = [[UIBarButtonItem alloc] init];
 	[self.button setStyle:UIBarButtonSystemItemFastForward];
-	
-	[self manageArguments:arguments container:parent];
-		
+	[super initialize:arguments container: parent];
 	return self;
 }
 
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
+	[super manageArgument:bo at:index];
 	switch (index) {
-		case 0:
+		case 6:
 			[self addBindingObject:bo forKey:@"title"];
 			[self.button setTitle:(NSString*)bo.value];
 			break;
-		case 1:
+		case 7:
 		{
 			NSSelector* methodSelector = (NSSelector*)bo.value;
 			[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];

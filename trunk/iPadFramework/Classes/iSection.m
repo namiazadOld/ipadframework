@@ -17,21 +17,18 @@
 
 @synthesize title, itemList;
 
--(id <iWidget>) initialize: (NSMutableArray*)arguments container: (id<iWidget>)parent
+-(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
 	[super initialize:arguments container: parent];
 	itemList = [[NSMutableArray alloc] init];
-	
-	[self manageArguments:arguments container:parent];
-	
-	
 	return self;
 }
 
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
+	[super manageArgument:bo at:index];
 	switch (index) {
-		case 0:
+		case 6:
 			[self addBindingObject:bo forKey:@"title"];
 			break;
 		default:
@@ -41,7 +38,7 @@
 
 
 //This method is called by addBodyControl method of parent to provide good level of extensibility
--(void) parentChanged: (id<iWidget>)parent
+-(void) parentChanged: (iBaseControl*)parent
 {
 	if ([parent isKindOfClass:[iTable class]])
 	{
@@ -55,7 +52,7 @@
 	
 }
 
--(void) childUpdated: (id<iWidget>)child
+-(void) childUpdated: (iBaseControl*)child
 {
 	[self.parentWidget childUpdated:child];
 }

@@ -19,11 +19,6 @@
 	return label.text;
 }
 
--(BOOL) eventSupported
-{
-	return NO;
-}
-
 -(void)setText:(NSString *)aString
 {
 	@synchronized(self)
@@ -36,23 +31,20 @@
 	}
 }
 
--(id <iWidget>) initialize: (NSMutableArray*) arguments container: (id<iWidget>)parent
+-(iBaseControl*) initialize: (NSMutableArray*) arguments container: (iBaseControl*)parent
 {
 	self.label = [[UILabel alloc] init];
 	self.label.adjustsFontSizeToFitWidth = YES;
 	[self.label setBackgroundColor:[UIColor clearColor]];
-	
 	[super initialize:arguments container: parent];
-	[self manageArguments:arguments container:parent];
-	
-	
 	return self;
 }
 
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
+	[super manageArgument:bo at:index];
 	switch (index) {
-		case 0:
+		case 6:
 			[self addBindingObject:bo forKey:@"text"];
 			self.label.text = (NSString*)bo.value;
 			break;
@@ -72,11 +64,11 @@
 	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
--(CGRect) getRecommendedFrame: (id <iWidget>)lastControl container:(id<iWidget>)parent
-{
-	CGRect baseFrame = [lastControl getFrame];
-	return CGRectMake(baseFrame.origin.x + DEFAULT_MARGIN, baseFrame.origin.y + baseFrame.size.height + DEFAULT_MARGIN, 90, 21);
-}
+//-(CGRect) getRecommendedFrame: (iBaseControl*)lastControl container:(iBaseControl*)parent
+//{
+//	CGRect baseFrame = [lastControl getFrame];
+//	return CGRectMake(baseFrame.origin.x + DEFAULT_MARGIN, baseFrame.origin.y + baseFrame.size.height + DEFAULT_MARGIN, 90, 21);
+//}
 
 -(CGRect) getFrame
 {
