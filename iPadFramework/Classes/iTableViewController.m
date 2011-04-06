@@ -41,7 +41,7 @@
 	if (cell == nil)
 		cell = item.cell;
 	
-	cell.textLabel.text = item.text;
+	cell.textLabel.text = item.title;
 	
     return cell;
 }
