@@ -7,7 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "iWidget.h"
 #import "iBaseControl.h"
 #import "iEmptyWidget.h"
 

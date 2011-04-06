@@ -15,8 +15,7 @@
 @implementation iItemText
 @synthesize textField;
 
-
--(id <iWidget>) initialize: (NSMutableArray*) arguments container: (id<iWidget>)parent
+-(iBaseControl*) initialize: (NSMutableArray*) arguments container: (iBaseControl*)parent
 {
 	[super initialize:arguments container: parent];
 	
@@ -35,7 +34,7 @@
 	return self;
 }
 
--(void)style: (id<iWidget>)parent
+-(void)style: (iBaseControl*)parent
 {
 	//Appearance managment!
 	if ([parent isKindOfClass:[iSection class]])
@@ -43,6 +42,7 @@
 		CGRect frame = self.textField.textBox.textBox.frame;
 		self.textField.textBox.textBox.frame = CGRectMake(frame.origin.x, frame.origin.y - DEFAULT_MARGIN, frame.size.width - 100, frame.size.height);
 	}
+
 	
 	textField.label.label.font = [UIFont fontWithName:@"Helvetica-Bold" size:[UIFont labelFontSize]];
 	

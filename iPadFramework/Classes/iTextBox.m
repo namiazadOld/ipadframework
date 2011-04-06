@@ -74,28 +74,26 @@
 	label.adjustsFontSizeToFitWidth = YES;
 }
 
--(id <iWidget>) initialize: (NSMutableArray*) arguments container: (id<iWidget>)parent
+-(iBaseControl*) initialize: (NSMutableArray*) arguments container: (iBaseControl*)parent
 {
 	self.textBox = [[UITextField alloc] init];
-	
 	[super initialize:arguments container: parent];
-	[self manageArguments:arguments container:parent];
-	
 	return self;
 }
 
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
+	[super manageArgument:bo at:index];
 	switch (index) {
-		case 0:
+		case 6:
 			[self addBindingObject:bo forKey:@"text"];
 			self.textBox.text = (NSString*)bo.value;
 			break;
-		case 1:
+		case 7:
 			[self addBindingObject:bo forKey:@"placeholder"];
 			self.textBox.placeholder = (NSString*)bo.value;
 			break;
-		case 2:
+		case 8:
 			[self addBindingObject:bo forKey:@"withBorder"];
 			self.withBorder = (NSNumber*)bo.value;
 			break;
@@ -104,15 +102,15 @@
 	}
 }
 
--(CGRect) getRecommendedFrame: (id <iWidget>) lastControl container:(id<iWidget>)parent
-{
-	CGRect baseFrame = [lastControl getFrame];
-	
-	float width = self.maxSize.width - (baseFrame.origin.x + 2*DEFAULT_MARGIN); 
-	if ([lastControl isKindOfClass:[iLabel class]])
-		return CGRectMake(baseFrame.origin.x + baseFrame.size.width + DEFAULT_MARGIN, baseFrame.origin.y, width - baseFrame.size.width, 31);
-	return CGRectMake(baseFrame.origin.x + DEFAULT_MARGIN, baseFrame.origin.y + DEFAULT_MARGIN, width, 31);
-}
+//-(CGRect) getRecommendedFrame: (iBaseControl*) lastControl container:(iBaseControl*)parent
+//{
+//	CGRect baseFrame = [lastControl getFrame];
+//	
+//	float width = self.maxSize.width - (baseFrame.origin.x + 2*DEFAULT_MARGIN); 
+//	if ([lastControl isKindOfClass:[iLabel class]])
+//		return CGRectMake(baseFrame.origin.x + baseFrame.size.width + DEFAULT_MARGIN, baseFrame.origin.y, width - baseFrame.size.width, 31);
+//	return CGRectMake(baseFrame.origin.x + DEFAULT_MARGIN, baseFrame.origin.y + DEFAULT_MARGIN, width, 31);
+//}
 
 -(CGRect) getFrame
 {

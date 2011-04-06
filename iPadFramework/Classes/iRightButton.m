@@ -13,7 +13,7 @@
 
 @implementation iRightButton
 
--(void) parentChanged: (id<iWidget>)parent
+-(void) parentChanged: (iBaseControl*)parent
 {
 	if ([parent isKindOfClass:[iHeader class]])
 	{

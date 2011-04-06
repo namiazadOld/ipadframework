@@ -11,4 +11,9 @@
 
 @implementation iEmptyWidget
 
+-(void) manageArgument:(BindableObject *)bo at:(int)index
+{
+	//hide super method
+}
+
 @end

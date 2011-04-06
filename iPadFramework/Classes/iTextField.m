@@ -13,15 +13,9 @@
 @implementation iTextField
 @synthesize label, textBox;
 
--(BOOL) eventSupported
-{
-	return YES;
-}
-
--(id <iWidget>) initialize: (NSMutableArray*) arguments container: (id<iWidget>)parent
+-(iBaseControl*) initialize: (NSMutableArray*) arguments container: (iBaseControl*)parent
 {
 	[super initialize:arguments container: parent];
-	[self manageArguments:arguments container:parent];
 	
 	BindableObject* textBO = [arguments objectAtIndex:0];
 	BindableObject* placeholderBO = [arguments objectAtIndex:1];
@@ -60,6 +54,11 @@
 	[self addBodyControl:self.textBox];
 	
 	return self;
+}
+
+-(void) manageArgument:(BindableObject *)bo at:(int)index
+{
+	//hide super method
 }
 
 
