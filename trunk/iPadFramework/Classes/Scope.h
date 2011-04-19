@@ -18,6 +18,7 @@
 @property (retain, nonatomic) Scope* parent;
 @property (retain, nonatomic) NSMutableDictionary* variables;
 
+-(void) assign: (NSString*)key value: (NSObject*) value;
 -(void) set: (NSString*)key variable: (NSObject*) variable;
 -(NSObject*) get: (NSString*) key;
 -(void) createInnerScope;

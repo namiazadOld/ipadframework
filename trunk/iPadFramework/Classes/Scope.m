@@ -7,6 +7,8 @@
 //
 
 #import "Scope.h"
+#import "BindableObject.h"
+#import "Utilities.h"
 
 
 @implementation Scope
@@ -36,6 +38,19 @@ static Scope* instance;
 	self.parent = nil;
 	self.variables = [[NSMutableDictionary alloc] init];
 	return self;
+}
+
+-(void) assign: (NSString*)key value: (NSObject*) value
+{
+	BindableObject* b = [self get:key];
+	
+	if (b != nil)
+	{
+		if ([value isKindOfClass:[BindableObject class]])
+			b.value = [value value];
+		else
+			b.value = value;
+	}
 }
 
 -(void) set: (NSString*)key variable: (NSObject*) variable
