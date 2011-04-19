@@ -15,6 +15,7 @@
 
 }
 
-+(CGRect) styledRectangle: (iBaseControl*)control container:(iBaseControl*)parent;
++(CGRect) styleRectangle: (iBaseControl*)control container:(iBaseControl*)parent;
++(void) orderWidgets: (iBaseControl*)container;
 
 @end
