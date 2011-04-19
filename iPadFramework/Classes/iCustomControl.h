@@ -12,9 +12,9 @@
 
 
 @interface iCustomControl : iBaseControl{
-	UIScrollView* scrollView;
+	iBaseControl* container;
 }
 
-@property (nonatomic, retain) UIScrollView* scrollView;
+@property (nonatomic, retain) iBaseControl* container;
 
 @end

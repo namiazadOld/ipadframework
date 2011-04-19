@@ -12,14 +12,13 @@
 
 
 @implementation iCustomControl
-@synthesize scrollView;
+@synthesize container;
 
 
 -(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
-	scrollView = [[UIScrollView alloc]init];
 	[super initialize:arguments container: parent];
-	lastInnerControl = [[iEmptyWidget alloc]init];
+	self.container = parent;
 	return self;
 }
 
@@ -46,17 +45,17 @@
 
 -(CGRect) getFrame
 {
-	return self.scrollView.frame;
+	return [self.container getFrame];
 }
 
 -(void)setFrame:(CGRect)frame
 {
-	self.scrollView.frame = frame;
+	[self.container setFrame:frame];
 }
 
 -(UIView*) getView
 {
-	return self.scrollView;
+	return [self.container getView];
 }
 
 -(void) addBodyControl:(iBaseControl*) widget

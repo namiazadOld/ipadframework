@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "BindableObject.h"
+#import "Scope.h"
+#import "UIStyle.h"
 
 
 typedef enum 
@@ -33,6 +35,14 @@ typedef enum
 	CGSize maxSize;
 	UIViewController* viewController;
 	NSMutableArray* children;
+	Scope* scope;
+	UIStyle* controlStyle;
+	
+	float marginLeft;
+	float marginRight;
+	float marginTop;
+	float marginBottom;
+	int lineNo;
 	
 	Anchor anchor;
 	Place  place;
@@ -50,6 +60,13 @@ typedef enum
 @property (nonatomic) Place place;
 @property (assign) CGRect initialFrame;
 @property (readonly, retain) NSMutableArray* children;
+@property (nonatomic, retain) Scope* scope;
+@property (assign) float marginLeft;
+@property (assign) float marginRight;
+@property (assign) float marginTop;
+@property (assign) float marginBottom;
+@property (assign) int lineNo;
+@property (nonatomic, retain) UIStyle* controlStyle;
 
 -(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent;
 -(CGRect) getRecommendedFrame: (iBaseControl*)parent;
@@ -66,7 +83,7 @@ typedef enum
 -(void) addBindingObject:(BindableObject*)bo forKey:(NSString*)key;
 -(void) manageArguments: (NSMutableArray*)arguments container: (iBaseControl*)parent;
 -(void) manageArgument: (BindableObject*)bo at:(int)index;
--(void)style: (iBaseControl*)parent;
+-(void) style;
 -(void) eventOccured: (id) sender;
 
 @end

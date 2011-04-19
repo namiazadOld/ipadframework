@@ -85,15 +85,15 @@
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
-		case 6:
+		case 10:
 			[self addBindingObject:bo forKey:@"text"];
 			self.textBox.text = (NSString*)bo.value;
 			break;
-		case 7:
+		case 11:
 			[self addBindingObject:bo forKey:@"placeholder"];
 			self.textBox.placeholder = (NSString*)bo.value;
 			break;
-		case 8:
+		case 12:
 			[self addBindingObject:bo forKey:@"withBorder"];
 			self.withBorder = (NSNumber*)bo.value;
 			break;

@@ -37,6 +37,8 @@
 	self.label.adjustsFontSizeToFitWidth = YES;
 	[self.label setBackgroundColor:[UIColor clearColor]];
 	[super initialize:arguments container: parent];
+	
+	self.label.font = [UIFont fontWithName:@"Helvetica-Bold" size:[UIFont labelFontSize]];
 	return self;
 }
 
@@ -44,7 +46,7 @@
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
-		case 6:
+		case 10:
 			[self addBindingObject:bo forKey:@"text"];
 			self.label.text = (NSString*)bo.value;
 			break;

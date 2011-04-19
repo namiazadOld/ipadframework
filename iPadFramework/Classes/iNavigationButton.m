@@ -46,11 +46,11 @@
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
-		case 6:
+		case 10:
 			[self addBindingObject:bo forKey:@"title"];
 			[self.button setTitle:(NSString*)bo.value];
 			break;
-		case 7:
+		case 11:
 		{
 			NSSelector* methodSelector = (NSSelector*)bo.value;
 			[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
