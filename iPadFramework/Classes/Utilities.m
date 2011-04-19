@@ -27,21 +27,35 @@ static UIViewController* currentView;
 
 }
 
+//+(void) AddControl:(iBaseControl*) widget ToContainer: (iBaseControl*) container
+//{
+//	iBaseControl* lastControl = container.lastInnerControl;
+//	[widget setFrame:[widget getRecommendedFrame: container]];
+//	UIView* view = [widget getView];
+//	
+//	if (view != NULL)
+//		[[container getChildrenHolder] addSubview:view];
+//	
+//	[container setLastInnerControl:widget];
+//	
+//	[widget setParentWidget:container];
+//	[widget parentChanged:container];
+//	[container.children addObject:widget];
+//}
+
 +(void) AddControl:(iBaseControl*) widget ToContainer: (iBaseControl*) container
 {
-	iBaseControl* lastControl = container.lastInnerControl;
-	[widget setFrame:[widget getRecommendedFrame: container]];
+
 	UIView* view = [widget getView];
 	
 	if (view != NULL)
 		[[container getChildrenHolder] addSubview:view];
-	
-	[container setLastInnerControl:widget];
-	
+		
 	[widget setParentWidget:container];
 	[widget parentChanged:container];
 	[container.children addObject:widget];
 }
+
 
 +(UIViewController*) CurrentView
 {
