@@ -11,6 +11,7 @@
 #import "iTable.h"
 #import "Utilities.h"
 #import "Constants.h"
+#import "iEmptyWidget.h"
 
 
 @implementation iSection
@@ -28,7 +29,7 @@
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
-		case 6:
+		case 10:
 			[self addBindingObject:bo forKey:@"title"];
 			break;
 		default:

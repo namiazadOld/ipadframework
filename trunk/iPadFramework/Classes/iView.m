@@ -18,7 +18,6 @@
 {
 	viewController = [[UIViewController alloc]init];
 	[super initialize:arguments container: parent];
-	lastInnerControl = [[iEmptyWidget alloc]init];
 	return self;
 }
 

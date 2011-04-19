@@ -13,8 +13,13 @@
 
 @implementation iBaseControl
 @synthesize boundObjects, locked, parentWidget, 
-			lastInnerControl, maxSize, viewController, anchor, place,
-			initialFrame, children;
+			lastInnerControl, maxSize, viewController, anchor, place, lineNo,
+			initialFrame, children, marginLeft, marginRight, marginTop, marginBottom, scope;
+
+-(Scope*) scope
+{
+	return [Scope instance];
+}
 
 -(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
@@ -35,12 +40,14 @@
 
 	[self manageArguments:arguments container:parent];
 	
+	parent.lastInnerControl = self;
+	
 	return self;
 }
 
 -(CGRect) getRecommendedFrame:(iBaseControl*)parent
 {
-	return [StylingManager styledRectangle:self container:parent];
+	return [StylingManager styleRectangle:self container:parent];
 }
 
 -(CGRect) getFrame
@@ -72,6 +79,7 @@
 {
 	[widget setParentWidget:self];
 	[widget parentChanged:self];
+	[self.children addObject:widget];
 }
 
 -(void) finilize
@@ -154,45 +162,33 @@
 		
 		[self manageArgument:bo at:i];
 		i++;
-	}	
+	}
+	
+	//lineNo management, should be located at better place
+	if (self.place == NextLine)
+	{
+		if (parent.lastInnerControl == NULL)
+			self.lineNo = 1;
+		else
+			self.lineNo = parent.lastInnerControl.lineNo + 1;
+	}
+	else
+	{
+		if (parent.lastInnerControl == NULL)
+			self.lineNo = 0;
+		else
+			self.lineNo = parent.lastInnerControl.lineNo;
+	}
+
 }
 
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
-	switch (index) {
-		case 0:
-		{
-			initialFrame = CGRectMake([((NSNumber*) bo.value) floatValue], initialFrame.origin.y, initialFrame.size.width, initialFrame.size.height);
-			break;
-		}
-		case 1:
-		{
-			initialFrame = CGRectMake(initialFrame.origin.x, [((NSNumber*) bo.value) floatValue], initialFrame.size.width, initialFrame.size.height);
-			break;
-		}
-		case 2:
-		{
-			initialFrame = CGRectMake(initialFrame.origin.x, initialFrame.origin.y, [((NSNumber*) bo.value) floatValue], initialFrame.size.height);
-			break;
-		}
-		case 3:
-		{
-			initialFrame = CGRectMake(initialFrame.origin.x, initialFrame.origin.y, initialFrame.size.width, [((NSNumber*) bo.value) floatValue]);
-			break;
-		}
-		case 4:
-		{
-			place = (Place) [((NSNumber*) bo.value) intValue];
-			break;
-		}
-		case 5:
-		{
-			anchor = (Anchor) [((NSNumber*) bo.value) intValue];
-			break;
-		}
-		default:
-			break;
-	}
+	
+}
+
+-(void)style
+{
 	
 }
 
@@ -200,11 +196,5 @@
 {
 	
 }
-
--(void)style: (iBaseControl*)parent
-{
-}
-
-
 
 @end
