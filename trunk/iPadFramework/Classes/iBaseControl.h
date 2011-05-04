@@ -12,31 +12,15 @@
 #import "UIStyle.h"
 
 
-typedef enum 
-{
-	Left = 0,
-	Right = 1,
-	LeftRight = 2,
-	None = 3
-} Anchor;
-
-typedef enum
-{
-	CurrentLine = 0,
- 	NextLine = 1
-} Place;
-
 @interface iBaseControl : NSObject {
 	//CGRect lastInnerControlFrame;
 	iBaseControl* lastInnerControl;
 	NSMutableDictionary* boundObjects;
 	BOOL locked;
 	iBaseControl* parentWidget;
-	CGSize maxSize;
 	UIViewController* viewController;
 	NSMutableArray* children;
 	Scope* scope;
-	UIStyle* controlStyle;
 	
 	float marginLeft;
 	float marginRight;
@@ -54,7 +38,6 @@ typedef enum
 @property (readwrite, retain) NSMutableDictionary* boundObjects;
 @property (readwrite, assign) BOOL locked;
 @property (readwrite, retain) iBaseControl* parentWidget;
-@property (readwrite, assign) CGSize maxSize;
 @property (nonatomic, retain) UIViewController* viewController;
 @property (nonatomic) Anchor anchor;
 @property (nonatomic) Place place;
@@ -66,9 +49,9 @@ typedef enum
 @property (assign) float marginTop;
 @property (assign) float marginBottom;
 @property (assign) int lineNo;
-@property (nonatomic, retain) UIStyle* controlStyle;
 
 -(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent;
+-(void) setControlStyle:(UIStyle *)style;
 -(CGRect) getRecommendedFrame: (iBaseControl*)parent;
 -(CGRect) getFrame;
 -(void) setFrame: (CGRect)frame;
@@ -83,7 +66,6 @@ typedef enum
 -(void) addBindingObject:(BindableObject*)bo forKey:(NSString*)key;
 -(void) manageArguments: (NSMutableArray*)arguments container: (iBaseControl*)parent;
 -(void) manageArgument: (BindableObject*)bo at:(int)index;
--(void) style;
 -(void) eventOccured: (id) sender;
 
 @end

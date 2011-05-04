@@ -14,7 +14,7 @@
 
 @implementation iTextBox
 
-@synthesize textBox, text, withBorder;
+@synthesize textBox, text;
 
 //Properties Wrappers
 -(NSString*) text
@@ -51,22 +51,19 @@
 	}
 }
 
--(NSNumber*) withBorder
+-(void) setControlStyle:(UIStyle *)style
 {
-	return [[NSNumber numberWithBool:self.textBox.borderStyle == UITextBorderStyleRoundedRect] autorelease];
+	[super setControlStyle:style];
+	
+	if ([style valueForKey:@"border_style"] == nil)
+		return;
+	
+	NSString* borderString = [[style valueForKey:@"border_style"] lowercaseString];
+	if ([borderString isEqualToString:@"bordered"])
+		self.textBox.borderStyle = UITextBorderStyleRoundedRect;
+	else
+		self.textBox.borderStyle = UITextBorderStyleNone;
 }
-
--(void)setWithBorder: (NSNumber*) aBool
-{
-	@synchronized(self)
-	{
-		if ([aBool compare:[NSNumber numberWithBool:YES]] == NSOrderedSame)
-			self.textBox.borderStyle = UITextBorderStyleRoundedRect;
-		else
-			self.textBox.borderStyle = UITextBorderStyleNone;
-	}
-}
-
 
 -(void) setupLabel: (NSString*) text
 {
@@ -85,32 +82,18 @@
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
-		case 10:
+		case 0:
 			[self addBindingObject:bo forKey:@"text"];
 			self.textBox.text = (NSString*)bo.value;
 			break;
-		case 11:
+		case 1:
 			[self addBindingObject:bo forKey:@"placeholder"];
 			self.textBox.placeholder = (NSString*)bo.value;
-			break;
-		case 12:
-			[self addBindingObject:bo forKey:@"withBorder"];
-			self.withBorder = (NSNumber*)bo.value;
 			break;
 		default:
 			break;
 	}
 }
-
-//-(CGRect) getRecommendedFrame: (iBaseControl*) lastControl container:(iBaseControl*)parent
-//{
-//	CGRect baseFrame = [lastControl getFrame];
-//	
-//	float width = self.maxSize.width - (baseFrame.origin.x + 2*DEFAULT_MARGIN); 
-//	if ([lastControl isKindOfClass:[iLabel class]])
-//		return CGRectMake(baseFrame.origin.x + baseFrame.size.width + DEFAULT_MARGIN, baseFrame.origin.y, width - baseFrame.size.width, 31);
-//	return CGRectMake(baseFrame.origin.x + DEFAULT_MARGIN, baseFrame.origin.y + DEFAULT_MARGIN, width, 31);
-//}
 
 -(CGRect) getFrame
 {

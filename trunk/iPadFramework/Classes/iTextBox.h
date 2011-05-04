@@ -16,6 +16,5 @@
 @property (nonatomic, retain) UITextField* textBox;
 @property (nonatomic, retain) NSString* text;
 @property (nonatomic, retain) NSString* placeholder;
-@property (nonatomic, retain) NSNumber* withBorder;
 
 @end

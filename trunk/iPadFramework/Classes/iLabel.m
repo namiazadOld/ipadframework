@@ -46,7 +46,7 @@
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
-		case 10:
+		case 0:
 			[self addBindingObject:bo forKey:@"text"];
 			self.label.text = (NSString*)bo.value;
 			break;
@@ -65,12 +65,6 @@
 {
 	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
-
-//-(CGRect) getRecommendedFrame: (iBaseControl*)lastControl container:(iBaseControl*)parent
-//{
-//	CGRect baseFrame = [lastControl getFrame];
-//	return CGRectMake(baseFrame.origin.x + DEFAULT_MARGIN, baseFrame.origin.y + baseFrame.size.height + DEFAULT_MARGIN, 90, 21);
-//}
 
 -(CGRect) getFrame
 {

@@ -24,18 +24,6 @@
 	return self;
 }
 
-//-(CGRect) getRecommendedFrame: (iBaseControl*)lastControl container:(iBaseControl*)parent
-//{
-//	CGRect baseFrame = [lastControl getFrame];
-//	
-//	float margin = 0.0;
-//	
-//	if (!([lastControl isKindOfClass:[iEmptyWidget class]] || [lastControl isKindOfClass:[iHeader class]]))
-//		margin = DEFAULT_MARGIN;
-//
-//	return CGRectMake(0.0, baseFrame.origin.y + baseFrame.size.height + margin, 768.0, 1004.0);
-//}
-
 -(CGRect) getFrame
 {
 	return self.tableViewController.tableView.frame;
