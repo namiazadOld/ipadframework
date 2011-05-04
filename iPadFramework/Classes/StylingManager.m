@@ -145,10 +145,7 @@
 
 	if (height == DEFAULT_HEIGHT)
 		height = [self calculateHeight:control];
-	
-	
-	[control style];
-	
+		
 	return CGRectMake(x, y, width, height);
 }
 
