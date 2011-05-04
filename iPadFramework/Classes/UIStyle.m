@@ -10,6 +10,7 @@
 
 
 @implementation UIStyle
+@synthesize left,top,width,height,margin_left,margin_right,margin_top,margin_bottom,place,anchor;
 
 -(UIStyle*) initialize
 {
