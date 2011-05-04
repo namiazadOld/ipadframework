@@ -39,7 +39,7 @@
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
-		case 10:
+		case 0:
 			[self addBindingObject:bo forKey:@"state"];
 			self.state = (NSNumber*)bo.value;
 			break;

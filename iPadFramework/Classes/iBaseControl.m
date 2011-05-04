@@ -13,12 +13,40 @@
 
 @implementation iBaseControl
 @synthesize boundObjects, locked, parentWidget, 
-			lastInnerControl, maxSize, viewController, anchor, place, lineNo,
+			lastInnerControl, viewController, anchor, place, lineNo,
 			initialFrame, children, marginLeft, marginRight, marginTop, marginBottom, scope;
 
 -(Scope*) scope
 {
 	return [Scope instance];
+}
+
+-(void) setControlStyle: (UIStyle*) style
+{
+	initialFrame = CGRectMake(style.left, style.top, style.width, style.height);
+	
+	NSString* placeString = [[style place] lowercaseString];
+	if ([placeString isEqualToString:@"currentline"])
+		self.place = CurrentLine;
+	else if ([placeString isEqualToString:@"nextline"])
+		self.place = NextLine;
+
+	
+	NSString* anchorString = [[style anchor] lowercaseString];
+	if ([anchorString isEqualToString:@"left"])
+		self.anchor = Left;
+	else if ([anchorString isEqualToString:@"right"])
+		self.anchor = Right;
+	else if ([anchorString isEqualToString:@"left-right"])
+		self.anchor = LeftRight;
+	else
+		self.anchor = None;
+
+	
+	self.marginTop = style.margin_top;
+	self.marginLeft = style.margin_left;
+	self.marginRight = style.margin_right;
+	self.marginBottom = style.margin_bottom;
 }
 
 -(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent
@@ -32,11 +60,6 @@
 	
 	
 	iBaseControl* parentControl = (iBaseControl*)parent;
-	
-	if (parentControl == NULL)
-		self.maxSize = CGSizeMake(VERTICAL_WIDTH, VERTICAL_HEIGHT);
-	else
-		self.maxSize = CGSizeMake(parentControl.maxSize.width, parentControl.maxSize.height);
 
 	[self manageArguments:arguments container:parent];
 	
@@ -184,12 +207,11 @@
 
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
-	
-}
-
--(void)style
-{
-	
+	if ([bo.value isKindOfClass:[UIStyle class]])
+	{
+		[self setControlStyle:(UIStyle*)bo.value];
+		[bo release];
+	}
 }
 
 -(void) childUpdated: (iBaseControl*)child

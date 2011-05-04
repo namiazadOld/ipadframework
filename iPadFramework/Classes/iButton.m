@@ -46,11 +46,11 @@
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
-		case 10:
+		case 0:
 			[self addBindingObject:bo forKey:@"title"];
 			[self.button setTitle:(NSString*)bo.value forState:UIControlStateNormal];
 			break;
-		case 11:
+		case 1:
 		{
 			NSSelector* methodSelector = (NSSelector*)bo.value;
 			[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
@@ -61,12 +61,6 @@
 	}
 	
 }
-
-//-(CGRect) getRecommendedFrame: (iBaseControl*)lastControl container:(iBaseControl*)parent
-//{
-//	CGRect baseFrame = [lastControl getFrame];
-//	return CGRectMake(baseFrame.origin.x + DEFAULT_MARGIN, baseFrame.origin.y + baseFrame.size.height + DEFAULT_MARGIN, 72, 37);
-//}
 
 -(CGRect) getFrame
 {

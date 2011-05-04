@@ -25,7 +25,7 @@
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
-		case 10:
+		case 0:
 			[self addBindingObject:bo forKey:@"title"];
 			break;
 		default:
@@ -33,15 +33,6 @@
 	}
 }
 
-
-//-(CGRect) getRecommendedFrame: (iBaseControl*) lastControl container:(iBaseControl*)parent
-//{
-//	CGRect baseFrame = [lastControl getFrame];
-//	return CGRectMake(baseFrame.origin.x, 
-//					  baseFrame.origin.y + baseFrame.size.height, 
-//					  baseFrame.size.width, 
-//					  baseFrame.size.height);
-//}
 
 -(void) parentChanged: (iBaseControl*)parent
 {
