@@ -11,6 +11,7 @@
 
 @implementation Context
 
+
 static iView* rootView;
 static NSMutableDictionary* typeToView; 
 static NSMutableArray* stackedView;
