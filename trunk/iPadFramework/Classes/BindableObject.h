@@ -8,13 +8,36 @@
 
 #import <Foundation/Foundation.h>
 
+typedef enum 
+{
+	Null = 0,
+	Num = 1,
+	Bool = 2,
+	Ref = 3
+} ValueType;
+
+
 
 @interface BindableObject : NSObject {
-	NSObject* value;
+	id value;
+	float numValue;
+	BOOL boolValue;
+	ValueType type;
+	NSMutableArray* observers;
 }
 
-@property (retain, readwrite) NSObject* value;
+@property (assign, readwrite) id value;
+@property (assign, readwrite) float numValue;
+@property (assign, readwrite) BOOL boolValue;
+@property (assign, readwrite) ValueType type;
+@property (retain, readonly) NSMutableArray* observers;
 
--(BindableObject *) initWithValue: (id)_value;
+
+-(void) initFields;
+-(BindableObject*) initWithValue: (id)_value;
+-(BindableObject*) initWithNumber: (float)_value;
+-(BindableObject*) initWithBool: (BOOL) _value;
+-(void) notifyObservers;
+-(void) addUIObserver: (id)control;
 
 @end
