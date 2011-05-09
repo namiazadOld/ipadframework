@@ -14,7 +14,7 @@
 
 @implementation iButton
 
-@synthesize button;
+@synthesize button, titleBindableObject;
 
 //Properties Wrappers
 -(NSString*) title
@@ -34,6 +34,7 @@
 	}
 }
 
+
 -(iBaseControl*) initialize: (NSMutableArray*) arguments container: (iBaseControl*)parent
 {
 	self.button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
@@ -42,12 +43,33 @@
 	return self;
 }
 
+-(void) eventOccured:(id)sender
+{
+	if (!self.locked)
+	{
+		self.locked = YES;
+		[self.titleBindableObject setValue:self.button.currentTitle];
+		self.locked = NO;
+	}
+}
+
+-(void) observeBindableValueChanged:(BindableObject*) bo
+{
+	if (!self.locked)
+	{
+		self.locked = YES;
+		[self.button setTitle:(NSString*)bo.value forState:UIControlStateNormal];
+		self.locked = NO;
+	}
+}
+
+
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
 		case 0:
-			[self addBindingObject:bo forKey:@"title"];
+			self.titleBindableObject = bo;
 			[self.button setTitle:(NSString*)bo.value forState:UIControlStateNormal];
 			break;
 		case 1:
@@ -55,6 +77,12 @@
 			NSSelector* methodSelector = (NSSelector*)bo.value;
 			[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
 			break;
+		}
+		case 2:
+		{
+			[self setControlStyle:(UIStyle*)bo.value];
+			break;
+
 		}
 		default:
 			break;

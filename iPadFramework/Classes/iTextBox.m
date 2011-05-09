@@ -14,7 +14,7 @@
 
 @implementation iTextBox
 
-@synthesize textBox, text;
+@synthesize textBox, text, textBindableObject, placeholderBindableObject;
 
 //Properties Wrappers
 -(NSString*) text
@@ -78,17 +78,44 @@
 	return self;
 }
 
+-(void) eventOccured:(id)sender
+{
+	if (!self.locked)
+	{
+		self.locked = YES;
+		[self.textBindableObject setValue:self.textBox.text];
+		[self.placeholderBindableObject setValue:self.textBox.placeholder];
+		self.locked = NO;
+	}
+}
+
+-(void) observeBindableValueChanged:(BindableObject*) bo
+{
+	if (!self.locked)
+	{
+		self.locked = YES;
+		if ([bo isEqual:self.textBindableObject])
+			self.textBox.text = (NSString*) bo.value;
+		else
+			self.textBox.placeholder = (NSString*) bo.value;
+		self.locked = NO;
+	}
+}
+
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
 		case 0:
-			[self addBindingObject:bo forKey:@"text"];
+			self.textBindableObject = bo;
 			self.textBox.text = (NSString*)bo.value;
 			break;
 		case 1:
-			[self addBindingObject:bo forKey:@"placeholder"];
+			self.placeholderBindableObject = bo;
 			self.textBox.placeholder = (NSString*)bo.value;
+			break;
+		case 2:
+			[self setControlStyle:(UIStyle*)bo.value];
 			break;
 		default:
 			break;

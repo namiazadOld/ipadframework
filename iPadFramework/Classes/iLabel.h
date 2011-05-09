@@ -13,9 +13,11 @@
 
 @interface iLabel : iBaseControl {
 	UILabel* label;
+	BindableObject* textBindableObject;
 }
 
 @property (nonatomic, retain) UILabel* label;
 @property (nonatomic, retain) NSString* text;
+@property (nonatomic, retain) BindableObject* textBindableObject;
 
 @end

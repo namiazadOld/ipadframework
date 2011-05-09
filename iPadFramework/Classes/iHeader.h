@@ -10,15 +10,18 @@
 #import "iBaseControl.h"
 
 
+
 @interface iHeader : iBaseControl {
 	
-		NSString* title;
-		UIBarButtonItem* rightButton;
-		UIBarButtonItem* leftButton;
+	NSString* title;
+	UIBarButtonItem* rightButton;
+	UIBarButtonItem* leftButton;
+	BindableObject* titleBindableObject;
 }
 
 @property (retain) NSString* title;
 @property (retain) UIBarButtonItem* rightButton;
 @property (retain) UIBarButtonItem* leftButton;
+@property (nonatomic, retain) BindableObject* titleBindableObject;
 
 @end

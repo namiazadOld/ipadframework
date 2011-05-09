@@ -10,21 +10,18 @@
 
 
 @implementation iSwitch
-@synthesize switchable, state;
+@synthesize switchable, status, statusBindableObject;
 
--(NSNumber*) state
+-(BOOL) status
 {
-	return [[NSNumber numberWithBool:self.switchable.on] autorelease];
+	return self.switchable.on;
 }
 
--(void)setState: (NSNumber*) aBool
+-(void)setStatus: (BOOL) aBool
 {
 	@synchronized(self)
 	{
-		if ([aBool compare:[NSNumber numberWithBool:YES]] == NSOrderedSame)
-			[self.switchable setOn:YES animated:YES];
-		else
-			[self.switchable setOn:NO animated:YES];
+		[self.switchable setOn:aBool animated:YES];
 	}
 }
 
@@ -35,13 +32,37 @@
 	return self;
 }
 
+-(void) eventOccured:(id)sender
+{
+	if (!self.locked)
+	{
+		self.locked = YES;
+		[self.statusBindableObject setBoolValue:self.switchable.on];
+		self.locked = NO;
+	}
+}
+
+-(void) observeBindableValueChanged:(BindableObject*) bo
+{
+	if (!self.locked)
+	{
+		self.locked = YES;
+		[self.switchable setOn:bo.boolValue animated:YES];
+		self.locked = NO;
+	}
+}
+
+
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
-		case 0:
-			[self addBindingObject:bo forKey:@"state"];
-			self.state = (NSNumber*)bo.value;
+		case 0: 
+			statusBindableObject = bo;
+			[self.switchable setOn:bo.boolValue animated:YES];
+			break;
+		case 1:
+			[self setControlStyle:(UIStyle*)bo.value];
 			break;
 		default:
 			break;

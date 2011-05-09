@@ -16,7 +16,7 @@
 
 @implementation iItem
 
-@synthesize title, cell;
+@synthesize title, cell, titleBindableObject;
 
 -(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
@@ -25,12 +25,27 @@
 	return self;
 }
 
+-(void) observeBindableValueChanged:(BindableObject*) bo
+{
+	if (!self.locked)
+	{
+		self.locked = YES;
+		self.title = (NSString*)bo.value;
+		[self.parentWidget childUpdated:self];
+		self.locked = NO;
+	}
+}
+
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
 		case 0:
-			[self addBindingObject:bo forKey:@"title"];
+			titleBindableObject = bo;
+			self.title = (NSString*)bo.value;
+			break;
+		case 1:
+			[self setControlStyle:(UIStyle*)bo.value];
 			break;
 		default:
 			break;
