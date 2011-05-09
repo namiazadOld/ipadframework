@@ -24,6 +24,22 @@
 	return self;
 }
 
+-(void) manageArgument: (BindableObject*)bo at:(int)index
+{
+	[super manageArgument:bo at:index];
+	switch (index) {
+		case 0:
+		{
+			[self setControlStyle:(UIStyle*)bo.value];
+			break;
+		}
+		default:
+			break;
+	}
+	
+}
+
+
 -(CGRect) getFrame
 {
 	return self.tableViewController.tableView.frame;
@@ -58,7 +74,6 @@
 -(void) childUpdated: (iBaseControl*)child
 {
 	[self.tableViewController.tableView reloadData];
-	//[self.tableViewController.tableView performSelectorOnMainThread:@selector(reloadData) withObject:nil waitUntilDone:NO];
 }
 
 @end

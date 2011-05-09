@@ -12,10 +12,12 @@
 
 @interface iNavigationButton : iBaseControl {
 	UIBarButtonItem* button;
+	BindableObject* titleBindableObject;
 	
 }
 
 @property (nonatomic, retain) UIBarButtonItem* button;
 @property (nonatomic, retain) NSString* title;
+@property (nonatomic, retain) BindableObject* titleBindableObject;
 
 @end

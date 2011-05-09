@@ -13,7 +13,7 @@
 
 @implementation iNavigationButton
 
-@synthesize button;
+@synthesize button, titleBindableObject;
 
 //Properties Wrappers
 -(NSString*) title
@@ -42,12 +42,33 @@
 	return self;
 }
 
+-(void) eventOccured:(id)sender
+{
+	if (!self.locked)
+	{
+		self.locked = YES;
+		[self.titleBindableObject setValue:self.button.title];
+		self.locked = NO;
+	}
+}
+
+-(void) observeBindableValueChanged:(BindableObject*) bo
+{
+	if (!self.locked)
+	{
+		self.locked = YES;
+		[self.button setTitle:(NSString*)bo.value];
+		self.locked = NO;
+	}
+}
+
+
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
 		case 0:
-			[self addBindingObject:bo forKey:@"title"];
+			titleBindableObject = bo.value;
 			[self.button setTitle:(NSString*)bo.value];
 			break;
 		case 1:
@@ -56,6 +77,9 @@
 			[self addTarget: methodSelector.target action: methodSelector.method forControlEvents:UIControlEventTouchUpInside];
 			break;
 		}
+		case 2:
+			[self setControlStyle:(UIStyle*)bo.value];
+			break;
 		default:
 			break;
 	}

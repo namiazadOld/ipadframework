@@ -12,7 +12,7 @@
 #import "StylingManager.h"
 
 @implementation iBaseControl
-@synthesize boundObjects, locked, parentWidget, 
+@synthesize locked, parentWidget, 
 			lastInnerControl, viewController, anchor, place, lineNo,
 			initialFrame, children, marginLeft, marginRight, marginTop, marginBottom, scope;
 
@@ -51,15 +51,12 @@
 
 -(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
-	boundObjects = [[NSMutableDictionary alloc]init];
 	children = [[NSMutableArray alloc] init];
 	initialFrame = CGRectMake(-1, -1, -1, -1);
 	
 	if ([[self getChildrenHolder] respondsToSelector:@selector(addTarget:action:forControlEvents:)] && [self getChildrenHolder] != NULL)
 		[[self getChildrenHolder] addTarget:self action:@selector(eventOccured:) forControlEvents:UIControlEventAllEvents];
 	
-	
-	iBaseControl* parentControl = (iBaseControl*)parent;
 
 	[self manageArguments:arguments container:parent];
 	
@@ -122,67 +119,24 @@
 
 -(void) eventOccured: (id) sender
 {
-	if (!self.locked)
-	{
-		NSArray* allKeys = [boundObjects allKeys];
-		for (int i = 0; i < [allKeys count]; i++)
-		{
-			NSString* property = [allKeys objectAtIndex:i];
-			BindableObject* bo = [boundObjects objectForKey:property];
-			self.locked = YES;
-			bo.value = [self valueForKey:property];
-			[property release];
-			self.locked = NO;
-		}
-	}
+
 }
 
-
--(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+-(void) observeBindableValueChanged:(BindableObject*) bo
 {
-	if (!self.locked)
-	{
-		if ([object isKindOfClass: [BindableObject class]])
-		{
-			BindableObject* bo = (BindableObject*)object;
-			
-			self.locked = YES;
-			NSArray* allKeys = [boundObjects allKeys];
-			for (int i = 0; i < [allKeys count]; i++)
-			{
-				NSString* property = [allKeys objectAtIndex:i];
-				if (![[boundObjects valueForKey:property] isEqual:bo])
-					continue;
-				[self setValue:bo.value forKey:property];
-				if (self.parentWidget != NULL)
-					[self.parentWidget childUpdated:self];
-				[property release];
-				break;
-			}
-			self.locked = NO;
-		}
-		
-	}
-}
-
--(void) addBindingObject:(BindableObject*)bo forKey:(NSString*)key
-{
-	[boundObjects setValue:bo forKey:key];
-	[bo addObserver:self forKeyPath:@"value" options:NSKeyValueChangeNewKey context:nil];
+	
 }
 
 -(void) manageArguments: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
-	
 	int i = 0;
 	for (BindableObject* bo in arguments)
 	{
-		if ([bo.value isKindOfClass:[NullObject class]])
+		if (bo.type == Null)
 		{
 			i++;
 			continue;
 		}
-		
 		[self manageArgument:bo at:i];
 		i++;
 	}
@@ -205,13 +159,10 @@
 
 }
 
+
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
-	if ([bo.value isKindOfClass:[UIStyle class]])
-	{
-		[self setControlStyle:(UIStyle*)bo.value];
-		[bo release];
-	}
+	[bo addUIObserver:self];
 }
 
 -(void) childUpdated: (iBaseControl*)child

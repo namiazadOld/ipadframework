@@ -15,7 +15,6 @@
 @interface iBaseControl : NSObject {
 	//CGRect lastInnerControlFrame;
 	iBaseControl* lastInnerControl;
-	NSMutableDictionary* boundObjects;
 	BOOL locked;
 	iBaseControl* parentWidget;
 	UIViewController* viewController;
@@ -35,7 +34,6 @@
 
 //@property (assign) CGRect lastInnerControlFrame;
 @property (readwrite, retain) iBaseControl* lastInnerControl;
-@property (readwrite, retain) NSMutableDictionary* boundObjects;
 @property (readwrite, assign) BOOL locked;
 @property (readwrite, retain) iBaseControl* parentWidget;
 @property (nonatomic, retain) UIViewController* viewController;
@@ -61,10 +59,11 @@
 -(void) addBodyControl:(iBaseControl*) widget;
 -(void) finilize;
 -(void) addTarget:(id)target  action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;
+-(void) observeBindableValueChanged:(BindableObject*) bo;
 -(void) parentChanged: (iBaseControl*)parent;
 -(void) childUpdated: (iBaseControl*)child;
--(void) addBindingObject:(BindableObject*)bo forKey:(NSString*)key;
 -(void) manageArguments: (NSMutableArray*)arguments container: (iBaseControl*)parent;
+-(void)manageStyleArgument: (BindableObject*)bo;
 -(void) manageArgument: (BindableObject*)bo at:(int)index;
 -(void) eventOccured: (id) sender;
 

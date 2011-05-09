@@ -12,9 +12,11 @@
 
 @interface iSwitch : iBaseControl {
 	UISwitch* switchable;
+	BindableObject* statusBindableObject;
 }
 
 @property (nonatomic, retain) UISwitch* switchable;
-@property (nonatomic, retain) NSNumber* state;
+@property (nonatomic, assign) BOOL status;
+@property (nonatomic, retain) BindableObject* statusBindableObject;
 
 @end

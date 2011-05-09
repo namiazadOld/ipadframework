@@ -12,9 +12,11 @@
 @interface iSection : iBaseControl {
 	NSMutableArray* itemList;
 	NSString* title;
+	BindableObject* titleBindableObject;
 }
 
 @property (nonatomic, retain) NSMutableArray* itemList;
 @property (retain) NSString* title;
+@property (nonatomic, retain) BindableObject* titleBindableObject;
 
 @end

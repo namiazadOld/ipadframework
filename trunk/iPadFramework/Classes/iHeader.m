@@ -13,7 +13,7 @@
 
 @implementation iHeader
 
-@synthesize title, rightButton, leftButton;
+@synthesize title, rightButton, leftButton, titleBindableObject;
 
 -(iBaseControl*) initialize: (NSMutableArray*)arguments container: (iBaseControl*)parent
 {
@@ -21,12 +21,28 @@
 	return self;
 }
 
+-(void) observeBindableValueChanged:(BindableObject*) bo
+{
+	if (!self.locked)
+	{
+		self.locked = YES;
+		self.title = (NSString*)bo.value;
+		iView* view = (iView*)self.parentWidget;
+		[view.viewController.navigationItem setTitle: self.title];
+		self.locked = NO;
+	}
+}
+
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
 		case 0:
-			[self addBindingObject:bo forKey:@"title"];
+			titleBindableObject = bo;
+			self.title = (NSString*)bo.value;
+			break;
+		case 1:
+			[self setControlStyle:(UIStyle*)bo.value];
 			break;
 		default:
 			break;

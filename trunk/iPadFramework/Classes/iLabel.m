@@ -11,7 +11,7 @@
 
 
 @implementation iLabel
-@synthesize label, text;
+@synthesize label, text, textBindableObject;
 
 //Properties Wrappers
 -(NSString*) text
@@ -42,28 +42,40 @@
 	return self;
 }
 
+-(void) eventOccured:(id)sender
+{
+	if (!self.locked)
+	{
+		self.locked = YES;
+		[self.textBindableObject setValue:self.label.text];
+		self.locked = NO;
+	}
+}
+
+-(void) observeBindableValueChanged:(BindableObject*) bo
+{
+	if (!self.locked)
+	{
+		self.locked = YES;
+		self.label.text = (NSString*) bo.value;
+		self.locked = NO;
+	}
+}
+
 -(void) manageArgument: (BindableObject*)bo at:(int)index
 {
 	[super manageArgument:bo at:index];
 	switch (index) {
 		case 0:
-			[self addBindingObject:bo forKey:@"text"];
+			self.textBindableObject = bo;
 			self.label.text = (NSString*)bo.value;
+			break;
+		case 1:
+			[self setControlStyle:(UIStyle*)bo.value];
 			break;
 		default:
 			break;
 	}
-}
-
-
--(void) eventOccured: (id) sender
-{
-	[super eventOccured:sender];
-}
-
--(void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
-{
-	[super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
 }
 
 -(CGRect) getFrame

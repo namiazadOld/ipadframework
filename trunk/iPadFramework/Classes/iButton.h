@@ -11,9 +11,11 @@
 
 @interface iButton : iBaseControl {
 	UIButton* button;
+	BindableObject* titleBindableObject;
 }
 
 @property (nonatomic, retain) UIButton* button;
 @property (nonatomic, retain) NSString* title;
+@property (nonatomic, retain) BindableObject* titleBindableObject;
 
 @end
