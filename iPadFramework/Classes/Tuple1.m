@@ -10,5 +10,12 @@
 
 
 @implementation Tuple1
+@synthesize _1;
+
+-(Tuple1*)  initWithValue: (id)v1
+{
+	self._1 = v1;
+	return self;
+}
 
 @end
